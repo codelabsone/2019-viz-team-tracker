@@ -4,23 +4,27 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { InfoContainerComponent } from './info-container/info-container.component';
-import {MatCardModule} from '@angular/material/card'; 
+import { TeamListContainerComponent } from './team-list-container/team-list-container.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material';
+import { MatDividerModule } from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    InfoContainerComponent
+    InfoContainerComponent,
+    TeamListContainerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
