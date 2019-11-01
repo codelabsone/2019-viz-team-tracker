@@ -1,1 +1,16 @@
+.positions {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: calc(100vh - 64px);
+    justify-content: space-around;
+    align-items: center;
+}
 
+.teams-list {
+    width: 45vw;
+}
+
+.info-container {
+    width: 45vw;
+}

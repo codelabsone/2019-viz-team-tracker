@@ -1,10 +1,15 @@
+.wrapper {
+    height: 85vh;
+}
+
 #teams-list {
-    width: 45%;
-    height: 80%;
-    padding: 20px;
-    margin: 20px;
+    margin: 0;
+    height: 100%;
+    padding: 0;
 }
 
 mat-card-title {
     color: #5e6f79;
+    padding: 16px;
+    margin: 0;
 }

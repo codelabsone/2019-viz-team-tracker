@@ -1,15 +1,15 @@
 .info-container {
-    width: 500px;
-    height: 500px;
-    margin-right: 20px;
-    margin-left: 795px;    
-    margin-top: -560px;
-    position: relative;
+    height: 65vh;
+    width: 35vw; display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .info-container-content {
     font-size: large;
-    text-align: center;
-    padding-top: 250px;
-    padding-bottom: 250px;
+   
 }
+
+
+
