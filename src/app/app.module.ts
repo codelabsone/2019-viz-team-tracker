@@ -13,6 +13,7 @@ import { MatDividerModule } from '@angular/material';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatDividerModule,
     MatListModule,
     MatButtonModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
