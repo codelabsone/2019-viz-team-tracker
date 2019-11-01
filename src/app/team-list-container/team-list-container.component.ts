@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./team-list-container.component.scss']
 })
 export class TeamListContainerComponent implements OnInit {
-
+  teams = ["P2P", "Catalog", "Cornerstone", "Data Crispr", "CLO", "SSO", "VizGan", "Tam", "EmtpyTeam"]
   constructor() { }
 
   ngOnInit() {
