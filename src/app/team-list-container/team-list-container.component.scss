@@ -1,11 +1,13 @@
-#teams-list {
-    width: 45%;
-    height: 80%;
+mat-card#teams-list {
+    width: 95%;
+    height: 85vh;
     padding: 0px;
     margin: 20px;
+    align-self: center;
 }
 
 mat-card-title {
     color: #5e6f79;
+    padding: 10px 10px;
 }
 
