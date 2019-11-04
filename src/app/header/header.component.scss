@@ -1,19 +1,45 @@
 .site-header {
+  display: flex;
   background-color: #ff4e00;
+  justify-content: space-between;
 }
 
 .header-logo {
   height: 30px;
 }
 
+.mat-toolbar-single-row {
+  height: 7vh;
+}
+
 .header-logo-border {
-  border-right: 2px solid #cc3e00;
+  border-right: 1px solid #cc3e00;
   padding-right: 17px;
   padding-top: 6px;
   padding-bottom: 6px;
 }
 
 .header-app-name {
+  display: flex;
   color: white;
   padding-left: 12px;
+  justify-self: left;
+}
+
+.header-username {
+  color: white;
+  padding: 0 10px;
+}
+
+.header-left { 
+  display: flex;
+}
+
+.header-title {
+  margin: auto;
+  padding-left: 5px;
+}
+
+.lighter-font {
+  font-weight: 400;
 }
