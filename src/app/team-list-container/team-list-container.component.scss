@@ -13,9 +13,15 @@ mat-card-title {
 
 .member-avatar {
     height: 40px;
+    padding: 10px;
 }
 
 .team-member-avatar {
     display: flex;
-    justify-content: space-between;
 }
+
+
+.expansion-panel-background {
+    background-color: lightgray;
+}
+
