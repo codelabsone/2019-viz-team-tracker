@@ -12,12 +12,14 @@ export class InfoContainerComponent implements OnInit {
 team: Team;
 
   constructor(private teamservice: TeamService) { 
-    
+
   }
 
   ngOnInit() {
-  
-  }
+    this.teamservice.selectedTeam.subscribe(data => {
+        this.team = data;
+      })
+    }
 
 
 }

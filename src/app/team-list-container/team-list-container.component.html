@@ -4,11 +4,16 @@
    <mat-card-content>
       <mat-accordion>
          <mat-expansion-panel *ngFor=" let team of teams">
-            <mat-expansion-panel-header>
+            <mat-expansion-panel-header (click)="setSelectedTeam(team)">
                <mat-panel-title>
                   {{team.name}}
                </mat-panel-title>
             </mat-expansion-panel-header>
+            <ul>
+               <li *ngFor="let member of team.members">
+                  {{member.name}}
+               </li>
+            </ul>
          </mat-expansion-panel>
       </mat-accordion>
    </mat-card-content>
