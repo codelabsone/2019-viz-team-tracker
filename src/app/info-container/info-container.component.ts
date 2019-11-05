@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Team } from '../models/team.model';
+import { TeamService } from '../team.service';
 
 @Component({
   selector: 'app-info-container',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoContainerComponent implements OnInit {
 
-  constructor() { }
+team: Team;
+
+  constructor(private teamservice: TeamService) { 
+    
+  }
 
   ngOnInit() {
+  
   }
+
 
 }
