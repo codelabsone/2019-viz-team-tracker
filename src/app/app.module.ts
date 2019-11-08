@@ -23,8 +23,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     HeaderComponent,
     InfoContainerComponent,
     TeamListContainerComponent,
-    
-    AddNewMemberDialogComponent
   ],
   imports: [
     MatTooltipModule,
