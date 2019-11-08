@@ -118,6 +118,36 @@ export const MOCKTEAMS: Team[] = [
           "name": "Quinn Ruiz",
           "email": "quinnruiz@dragbot.com",
           "jobtitle": "Quality Assurance Engineer"
+        },
+        {
+          "avatar": "../assets/avatar.png",
+          "name": "Francisca Salas",
+          "email": "franciscasalas@dragbot.com",
+          "jobtitle": "Quality Assurance Engineer"
+        },
+        {
+          "avatar": "../assets/avatar.png",
+          "name": "Francisca Salas",
+          "email": "franciscasalas@dragbot.com",
+          "jobtitle": "Quality Assurance Engineer"
+        },
+        {
+          "avatar": "../assets/avatar.png",
+          "name": "Francisca Salas",
+          "email": "franciscasalas@dragbot.com",
+          "jobtitle": "Quality Assurance Engineer"
+        },
+        {
+          "avatar": "../assets/avatar.png",
+          "name": "Francisca Salas",
+          "email": "franciscasalas@dragbot.com",
+          "jobtitle": "Quality Assurance Engineer"
+        },
+        {
+          "avatar": "../assets/avatar.png",
+          "name": "Francisca Salas",
+          "email": "franciscasalas@dragbot.com",
+          "jobtitle": "Quality Assurance Engineer"
         }
       ]
     },
