@@ -12,7 +12,7 @@
             <mat-card-content class='expansion-panel-background'>
                <div class='team-member-avatar'>
                   <div *ngFor="let member of team.members">
-                     <div> 
+                     <div cdkDrag> 
                         <img matTooltip='{{member.name}}'
                              matTooltipPosition='above' 
                              class='member-avatar' 
@@ -23,7 +23,7 @@
                </div>
             </mat-card-content>
             <mat-action-row class="expansion-panel-tools">
-               <mat-icon>person_add</mat-icon>
+               <mat-icon (click)="openAddPersonDialog()" >person_add</mat-icon>
             </mat-action-row>
          </mat-expansion-panel>
       </mat-accordion>

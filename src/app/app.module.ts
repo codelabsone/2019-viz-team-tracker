@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -22,10 +23,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     AppComponent,
     HeaderComponent,
     InfoContainerComponent,
-    TeamListContainerComponent
+    TeamListContainerComponent,
   ],
   imports: [
-    MatTooltipModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -35,7 +35,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatListModule,
     MatButtonModule,
     MatExpansionModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
