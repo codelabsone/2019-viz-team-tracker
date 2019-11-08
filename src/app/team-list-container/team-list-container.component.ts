@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Team } from '../models/team.model';
+import { TeamService } from '../team.service';
 
 @Component({
   selector: 'app-team-list-container',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./team-list-container.component.scss']
 })
 export class TeamListContainerComponent implements OnInit {
+  teams: Team[] = [];
 
-  constructor() { }
+
+  constructor(private teamService: TeamService) { }
 
   ngOnInit() {
+    this.teams = this.teamService.teams;
+  }
+
+  setSelectedTeam(team: Team) {
+    this.teamService.selectedTeam.next(team);
   }
 
 }

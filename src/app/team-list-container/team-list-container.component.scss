@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .wrapper {
     height: 85vh;
 }
@@ -6,10 +7,48 @@
     margin: 0;
     height: 100%;
     padding: 0;
+=======
+mat-card#teams-list {
+    width: 95%;
+    height: 85vh;
+    padding: 0px;
+    margin: 20px;
+    align-self: center;
+>>>>>>> master
 }
 
 mat-card-title {
     color: #5e6f79;
+<<<<<<< HEAD
     padding: 16px;
     margin: 0;
 }
+=======
+    padding: 10px 10px;
+}
+
+.member-avatar {
+    height: 40px;
+    padding: 10px;
+    cursor: move;
+}
+
+.team-member-avatar {
+    display: flex;
+}
+
+
+// .expansion-panel-background {
+//     background-color: lightgray;
+// }
+
+.expansion-panel-tools {
+    mat-icon {
+        display: flex;
+        justify-content: right;
+        color: rgba(69, 90, 100, .87);
+        margin-right: 12px;
+        cursor: pointer;
+    }
+}
+>>>>>>> master

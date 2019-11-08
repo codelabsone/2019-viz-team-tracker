@@ -13,13 +13,16 @@ import { MatDividerModule } from '@angular/material';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     InfoContainerComponent,
-    TeamListContainerComponent
+    TeamListContainerComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatDividerModule,
     MatListModule,
     MatButtonModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatIconModule,
+    MatTooltipModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

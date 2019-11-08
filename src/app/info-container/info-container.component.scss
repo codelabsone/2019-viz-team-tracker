@@ -1,15 +1,60 @@
 .info-container {
+<<<<<<< HEAD
     height: 65vh;
     width: 35vw; display: flex;
     justify-content: center;
     align-items: center;
 
+=======
+    width: 95%;
+    height: 80vh;
+    padding: 0;
+    margin: 20px;
+    align-self: center;
+>>>>>>> master
 }
 
-.info-container-content {
+.info-container-empty {
     font-size: large;
+<<<<<<< HEAD
    
 }
 
 
 
+=======
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding-top: 40vh;
+}
+
+.info-team-members {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2vh;
+}
+
+.info-team-member {
+    display: flex;
+    flex-basis: 0;
+    align-items: flex-end;
+    min-width: 50%;
+}
+
+.info-container-thumb {
+    width: 90px;
+    height: 90px;
+}
+
+.info-team-member-details {
+    margin: 1vh;
+    color: darkslategray;
+}
+
+
+mat-card-title {
+    color: #5e6f79;
+    padding: 10px 10px;
+}
+>>>>>>> master
