@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
+import { AddNewMemberDialogComponent } from './add-new-member-dialog/add-new-member-dialog.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MatIconModule } from '@angular/material/icon';
     AppComponent,
     HeaderComponent,
     InfoContainerComponent,
-    TeamListContainerComponent
+    TeamListContainerComponent,
+    AddNewMemberDialogComponent
   ],
   imports: [
     BrowserModule,
