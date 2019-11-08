@@ -11,3 +11,10 @@ mat-card-title {
     padding: 10px 10px;
 }
 
+.expansion-panel-tools {
+    mat-icon {
+        display: flex;
+        justify-content: right;
+        color: darkslategray;
+    }
+}
