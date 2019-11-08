@@ -12,7 +12,13 @@
             <mat-card-content class='expansion-panel-background'>
                <div class='team-member-avatar'>
                   <div *ngFor="let member of team.members">
-                     <img class='member-avatar' src="{{member.avatar}}" alt="{{member.name}}">
+                     <div> 
+                        <img matTooltip='{{member.name}}'
+                             matTooltipPosition='above' 
+                             class='member-avatar' 
+                             src="{{member.avatar}}" 
+                             alt="{{member.name}}">
+                     </div>
                   </div>
                </div>
             </mat-card-content>
