@@ -3,8 +3,8 @@
    <mat-divider></mat-divider>
    <mat-card-content>
       <mat-accordion>
-         <mat-expansion-panel *ngFor="let team of teams">
-            <mat-expansion-panel-header>
+         <mat-expansion-panel *ngFor=" let team of teams">
+            <mat-expansion-panel-header (click)="setSelectedTeam(team)">
                <mat-panel-title>
                   {{team.name}}
                </mat-panel-title>
@@ -22,6 +22,9 @@
                   </div>
                </div>
             </mat-card-content>
+            <mat-action-row class="expansion-panel-tools">
+               <mat-icon>person_add</mat-icon>
+            </mat-action-row>
          </mat-expansion-panel>
       </mat-accordion>
    </mat-card-content>

@@ -25,3 +25,10 @@ mat-card-title {
     background-color: lightgray;
 }
 
+.expansion-panel-tools {
+    mat-icon {
+        display: flex;
+        justify-content: right;
+        color: darkslategray;
+    }
+}

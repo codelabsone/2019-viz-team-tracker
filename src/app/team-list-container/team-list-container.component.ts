@@ -17,4 +17,8 @@ export class TeamListContainerComponent implements OnInit {
     this.teams = this.teamService.teams;
   }
 
+  setSelectedTeam(team: Team) {
+    this.teamService.selectedTeam.next(team);
+  }
+
 }
