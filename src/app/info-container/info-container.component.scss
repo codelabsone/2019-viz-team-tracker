@@ -9,8 +9,9 @@
 .info-container-empty {
     font-size: large;
     text-align: center;
-    padding-top: 250px;
-    padding-bottom: 250px;
+    display: flex;
+    justify-content: center;
+    padding-top: 40vh;
 }
 
 .info-team-members {
