@@ -11,6 +11,20 @@ mat-card-title {
     padding: 10px 10px;
 }
 
+.member-avatar {
+    height: 40px;
+    padding: 10px;
+}
+
+.team-member-avatar {
+    display: flex;
+}
+
+
+.expansion-panel-background {
+    background-color: lightgray;
+}
+
 .expansion-panel-tools {
     mat-icon {
         display: flex;
