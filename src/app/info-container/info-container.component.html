@@ -3,22 +3,24 @@
 <mat-card class="info-container">
   <div *ngIf="team !== null">
     <mat-card-title>
-      {{team.name}}
+      <span (click)="returnClick()" >{{team.name}}</span>
+      <span *ngIf="selectedMember"> > {{selectedMember.name}} </span>
     </mat-card-title>
     <mat-divider></mat-divider>
   </div>
   <mat-card-content *ngIf="team == null" class="info-container-empty">
     Select a team to view members.
   </mat-card-content>
-  <mat-card-content *ngIf="team !== null" class="info-team-members">
-    <div *ngFor="let member of team.members" class="info-team-member">
-      <div class="info-team-member-image-container">
-        <img src="{{member.avatar}}" alt="{{member.name}}" class="info-container-thumb">
+    <div *ngIf="team !== null && selectedMember === null" class="info-team-members">
+      <div (click)="onClickMe(member)" *ngFor="let member of team.members" class="info-team-member" >
+        <div class="info-team-member-image-container">
+          <img src="{{member.avatar}}" alt="{{selectedMember}}" class="info-container-thumb">
+        </div>
+        <div class="info-team-member-details">
+          <span>{{member.name}}</span><br>
+          <span>{{member.jobtitle}}</span>
+        </div>
       </div>
-      <div class="info-team-member-details">
-        <span>{{member.name}}</span><br>
-        <span>{{member.jobtitle}}</span>
-      </div>
-    </div>
-  </mat-card-content>
+    
+</div>
 </mat-card>
