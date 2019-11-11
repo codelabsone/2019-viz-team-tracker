@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+export interface DialogData {
+  name: string;
+  jobtitle: string;
+  email: string;
+  avatar: string;
+}
 
 @Component({
   selector: 'app-add-new-member-dialog',
@@ -7,9 +15,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddNewMemberDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<AddNewMemberDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoclick(): void {
+     this.dialogRef.close();
+  }
 
   ngOnInit() {
+  }
+
+  close() {
+    this.dialogRef.close();
   }
 
 }
