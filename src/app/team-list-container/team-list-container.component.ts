@@ -40,8 +40,16 @@ export class TeamListContainerComponent implements OnInit {
           event.previousIndex,
           event.currentIndex);
         }
+        else {
+          this.startErrorTimer(team);
+        }
     }
 
+  }
+
+  startErrorTimer(team: Team) {
+    team.limitReachedError = true;
+    setTimeout(function(){team.limitReachedError = false}, 3000);
   }
 
 }
