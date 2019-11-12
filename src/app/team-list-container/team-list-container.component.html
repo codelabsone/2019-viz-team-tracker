@@ -21,7 +21,9 @@
                      </div>
                </div>
             <mat-action-row class="expansion-panel-tools">
-               <mat-icon (click)="openAddPersonDialog()" >person_add</mat-icon>
+               <!-- team list counter -->
+               <span class="team-counter">{{team.members.length}}/12</span>
+               <mat-icon (click)="openAddPersonDialog()">person_add</mat-icon>
             </mat-action-row>
          </mat-expansion-panel>
       </mat-accordion>
