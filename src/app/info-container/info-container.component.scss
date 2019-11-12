@@ -40,18 +40,22 @@
 .selected-member {
     display: flex;
     justify-content: left;
+    font-size: 2vmin;
+    margin: 3vh;
 }
 
 .selected-member-avatar {
-    width: 10vw;
-    padding: 15px;
+    width: 25%;
+  margin-right: 1vh;
 }
 
 .selected-member-info {
     color: #5e6f79;
-    font-size: 24px;
-    font-weight: 400;
-    margin-top: 55px;
+    display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 1vh;
+  font-size: x-large;
 }
 mat-card-title {
     color: #5e6f79;
