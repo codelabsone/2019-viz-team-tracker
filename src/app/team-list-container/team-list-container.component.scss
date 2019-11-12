@@ -30,5 +30,30 @@ mat-card-title {
         color: rgba(69, 90, 100, .87);
         margin-right: 12px;
         cursor: pointer;
+        font-size: 200%;
     }
+    align-items: flex-end;
 }
+
+.member-list {
+    display: flex;
+    flex-direction: row;
+}
+
+.cdk-drag-placeholder {
+    opacity: 50%;
+  }
+  
+.cdk-drag-animating {
+transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.member-list.cdk-drop-list-dragging .member-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.team-counter {
+      margin-right: 1.7vh;
+      font-weight: 300;
+}
+

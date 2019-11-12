@@ -8,4 +8,5 @@ export class Team {
         this.name = name;
         this.members = [];
     }
+
 }
