@@ -3,6 +3,7 @@ import { Team } from '../app/models/team.model';
 export const MOCKTEAMS: Team[] = [
     {
       "name": "P2P",
+      'limitReachedError': false,
       "members": [
         {
           "avatar": "../assets/avatar.png",
@@ -80,6 +81,7 @@ export const MOCKTEAMS: Team[] = [
     },
     {
       "name": "Catalog",
+      'limitReachedError': false,
       "members": [
         {
           "avatar": "../assets/avatar.png",
@@ -115,6 +117,7 @@ export const MOCKTEAMS: Team[] = [
     },
     {
       "name": "Cornerstone",
+      'limitReachedError': false,
       "members": [
         {
           "avatar": "../assets/avatar.png",
@@ -195,6 +198,7 @@ export const MOCKTEAMS: Team[] = [
     },
     {
       "name": "Data Crispr",
+      'limitReachedError': false,
       "members": [
         {
           "avatar": "../assets/avatar.png",
@@ -249,6 +253,7 @@ export const MOCKTEAMS: Team[] = [
     },
     {
       "name": "CLO",
+      'limitReachedError': false,
       "members": [
         {
           "avatar": "../assets/avatar.png",
@@ -303,6 +308,7 @@ export const MOCKTEAMS: Team[] = [
     },
     {
       "name": "SLO",
+      'limitReachedError': false,
       "members": [
         {
           "avatar": "../assets/avatar.png",
@@ -343,6 +349,7 @@ export const MOCKTEAMS: Team[] = [
     },
     {
       "name": "VizGan",
+      'limitReachedError': false,
       "members": [
         {
           "avatar": "../assets/avatar.png",
@@ -397,6 +404,7 @@ export const MOCKTEAMS: Team[] = [
     },
     {
       "name": "Tam",
+      'limitReachedError': false,
       "members": [
         {
           "avatar": "../assets/avatar.png",
@@ -444,6 +452,7 @@ export const MOCKTEAMS: Team[] = [
     },
     {
       "name": "EmptyTeam",
+      'limitReachedError': false,
       "members": [
         {
           "avatar": "../assets/avatar.png",
