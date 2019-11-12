@@ -37,7 +37,22 @@
     color: darkslategray;
 }
 
+.selected-member {
+    display: flex;
+    justify-content: left;
+}
 
+.selected-member-avatar {
+    width: 10vw;
+    padding: 15px;
+}
+
+.selected-member-info {
+    color: #5e6f79;
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: 55px;
+}
 mat-card-title {
     color: #5e6f79;
     padding: 10px 10px;
