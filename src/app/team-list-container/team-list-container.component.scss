@@ -4,6 +4,7 @@ mat-card#teams-list {
     padding: 0px;
     margin: 20px;
     align-self: center;
+    overflow-y: auto;
 }
 
 mat-card-title {
