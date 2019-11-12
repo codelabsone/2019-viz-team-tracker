@@ -2,7 +2,7 @@
    <mat-card-title>Teams</mat-card-title>
    <mat-divider></mat-divider>
    <mat-card-content>
-      <mat-accordion>
+      <mat-accordion multi="true" cdkDropListGroup>
          <mat-expansion-panel *ngFor=" let team of teams">
             <mat-expansion-panel-header (click)="setSelectedTeam(team)">
                <mat-panel-title>
@@ -11,7 +11,8 @@
             </mat-expansion-panel-header>
                <div cdkDropList cdkDropListOrientation="horizontal"
                   class="member-list team-member-avatar" 
-                  (cdkDropListDropped)="drop($event, team)">
+                  (cdkDropListDropped)="drop($event, team)"
+                  [cdkDropListData]="team.members">
                      <div class="member-box" *ngFor="let member of team.members" cdkDrag>
                         <img matTooltip='{{member.name}}'
                         matTooltipPosition='above' 
