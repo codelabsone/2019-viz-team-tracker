@@ -15,7 +15,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AddNewMemberDialogComponent } from './add-new-member-dialog/add-new-member-dialog.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     HeaderComponent,
     InfoContainerComponent,
     TeamListContainerComponent,
+    AddNewMemberDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +39,11 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatExpansionModule,
     MatIconModule,
     MatTooltipModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddNewMemberDialogComponent]
 })
 export class AppModule { }
