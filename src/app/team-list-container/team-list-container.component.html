@@ -9,21 +9,17 @@
                   {{team.name}}
                </mat-panel-title>
             </mat-expansion-panel-header>
-            <mat-card-content class='expansion-panel-background'>
-               <div class='team-member-avatar'>
-                  <div cdkDropList cdkDropListOrientation="horizontal"
-                     class="member-list" 
-                     (cdkDropListDropped)="drop($event, team)">
-                        <div class="member-box" *ngFor="let member of team.members" cdkDrag>
-                           <img matTooltip='{{member.name}}'
-                           matTooltipPosition='above' 
-                           class='member-avatar' 
-                           src="{{member.avatar}}" 
-                           alt="{{member.name}}">
-                        </div>
-                  </div>
+               <div cdkDropList cdkDropListOrientation="horizontal"
+                  class="member-list team-member-avatar" 
+                  (cdkDropListDropped)="drop($event, team)">
+                     <div class="member-box" *ngFor="let member of team.members" cdkDrag>
+                        <img matTooltip='{{member.name}}'
+                        matTooltipPosition='above' 
+                        class='member-avatar' 
+                        src="{{member.avatar}}" 
+                        alt="{{member.name}}">
+                     </div>
                </div>
-            </mat-card-content>
             <mat-action-row class="expansion-panel-tools">
                <mat-icon (click)="openAddPersonDialog()" >person_add</mat-icon>
             </mat-action-row>
