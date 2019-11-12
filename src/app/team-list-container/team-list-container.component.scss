@@ -12,19 +12,16 @@ mat-card-title {
 }
 
 .member-avatar {
-    height: 40px;
-    padding: 10px;
     cursor: move;
+    height: 2.75vw;
+    margin: .5vw;
 }
 
 .team-member-avatar {
     display: flex;
+    width: 100%;
+    align-items: center;
 }
-
-
-// .expansion-panel-background {
-//     background-color: lightgray;
-// }
 
 .expansion-panel-tools {
     mat-icon {

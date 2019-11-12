@@ -33,6 +33,48 @@ export const MOCKTEAMS: Team[] = [
           "name": "Heather Long",
           "email": "heatherlong@dragbot.com",
           "jobtitle": "UX Engineer"
+        },
+        {
+          "avatar": "../assets/avatar.png",
+          "name": "Bonner Mercado",
+          "email": "bonnermercado@dragbot.com",
+          "jobtitle": "Software Engineer"
+        },
+        {
+          "avatar": "../assets/avatar.png",
+          "name": "Bonner Mercado",
+          "email": "bonnermercado@dragbot.com",
+          "jobtitle": "Software Engineer"
+        },
+        {
+          "avatar": "../assets/avatar.png",
+          "name": "Bonner Mercado",
+          "email": "bonnermercado@dragbot.com",
+          "jobtitle": "Software Engineer"
+        },
+        {
+          "avatar": "../assets/avatar.png",
+          "name": "Bonner Mercado",
+          "email": "bonnermercado@dragbot.com",
+          "jobtitle": "Software Engineer"
+        },
+        {
+          "avatar": "../assets/avatar.png",
+          "name": "Bonner Mercado",
+          "email": "bonnermercado@dragbot.com",
+          "jobtitle": "Software Engineer"
+        },
+        {
+          "avatar": "../assets/avatar.png",
+          "name": "Bonner Mercado",
+          "email": "bonnermercado@dragbot.com",
+          "jobtitle": "Software Engineer"
+        },
+        {
+          "avatar": "../assets/avatar.png",
+          "name": "Bonner Mercado",
+          "email": "bonnermercado@dragbot.com",
+          "jobtitle": "Software Engineer"
         }
       ]
     },
