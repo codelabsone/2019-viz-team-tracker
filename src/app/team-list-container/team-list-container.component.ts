@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Team } from '../models/team.model';
+import { Teammember } from '../models/member.model';
 import { TeamService } from '../team.service';
 import { AddNewMemberDialogComponent } from '../add-new-member-dialog/add-new-member-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-team-list-container',
@@ -26,6 +28,10 @@ export class TeamListContainerComponent implements OnInit {
 
   setSelectedTeam(team: Team) {
     this.teamService.selectedTeam.next(team);
+  }
+
+  drop(event: CdkDragDrop<Teammember[]>, team: Team) {
+    moveItemInArray(team.members, event.previousIndex, event.currentIndex);
   }
 
 }

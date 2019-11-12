@@ -11,14 +11,16 @@
             </mat-expansion-panel-header>
             <mat-card-content class='expansion-panel-background'>
                <div class='team-member-avatar'>
-                  <div *ngFor="let member of team.members">
-                     <div cdkDrag> 
-                        <img matTooltip='{{member.name}}'
-                             matTooltipPosition='above' 
-                             class='member-avatar' 
-                             src="{{member.avatar}}" 
-                             alt="{{member.name}}">
-                     </div>
+                  <div cdkDropList cdkDropListOrientation="horizontal"
+                     class="member-list" 
+                     (cdkDropListDropped)="drop($event, team)">
+                        <div class="member-box" *ngFor="let member of team.members" cdkDrag>
+                           <img matTooltip='{{member.name}}'
+                           matTooltipPosition='above' 
+                           class='member-avatar' 
+                           src="{{member.avatar}}" 
+                           alt="{{member.name}}">
+                        </div>
                   </div>
                </div>
             </mat-card-content>
