@@ -34,10 +34,12 @@ export class TeamListContainerComponent implements OnInit {
     if (event.previousContainer === event.container) {
         moveItemInArray(team.members, event.previousIndex, event.currentIndex);
     } else {
-      transferArrayItem(event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex);
+      if (event.container.data.length < 12) {
+        transferArrayItem(event.previousContainer.data,
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex);
+        }
     }
 
   }
