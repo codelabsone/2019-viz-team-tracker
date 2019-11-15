@@ -5,13 +5,25 @@ mat-card#teams-list {
     margin: 20px;
     align-self: center;
     overflow-y: auto;
-}
+    display: flex;
+    flex-direction: column;
 
-mat-card-title {
-    color: #5e6f79;
-    padding: 10px 10px;
-}
+    mat-card-content {
+        overflow-y: auto;
+        flex-grow: 1;
+    }
 
+    mat-card-title {
+        color: #5e6f79;
+        padding: 10px 10px;
+        flex-grow: 0;
+        border-bottom: 1px solid lightgray;
+    }
+
+    mat-action-row {
+        flex-grow: 0;
+    }
+}
 .member-avatar {
     cursor: move;
     height: 2.75vw;
