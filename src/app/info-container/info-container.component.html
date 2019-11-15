@@ -38,8 +38,14 @@
       </div>
     </div>
     </mat-card-content>
-    <div class="info-panel-action-row">
-      <mat-icon matTooltip='Edit {{team.name}}' matTooltipPosition='above'>edit</mat-icon> <mat-icon matTooltip='Archive {{team.name}}' matTooltipPosition='above'>archive</mat-icon>
+    <div class="info-panel-action-row" *ngIf="selectedMember === null">
+      <mat-icon matTooltip="{{team.name}} History" matTooltipPosition='above'>history</mat-icon>
+      <mat-icon matTooltip='Edit {{team.name}}' matTooltipPosition='above'>edit</mat-icon>
+      <mat-icon matTooltip='Archive {{team.name}}' matTooltipPosition='above'>archive</mat-icon>
+    </div>
+    <div class="info-panel-action-row" *ngIf="selectedMember !== null">
+      <mat-icon matTooltip='Edit {{selectedMember.name}}' matTooltipPosition='above'>edit</mat-icon>
+      <mat-icon matTooltip='Archive {{selectedMember.name}}' matTooltipPosition='above'>archive</mat-icon>
     </div>
   </div>
 </mat-card>
