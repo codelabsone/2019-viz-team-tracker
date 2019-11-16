@@ -13,6 +13,7 @@ import { moveItemInArray, CdkDragDrop, transferArrayItem } from '@angular/cdk/dr
 })
 export class TeamListContainerComponent implements OnInit {
   teams: Team[] = [];
+  selectedTeam: Team;
 
   constructor(private teamService: TeamService, public addMemberDialog: MatDialog) {}
 
@@ -28,6 +29,9 @@ export class TeamListContainerComponent implements OnInit {
 
   ngOnInit() {
     this.teams = this.teamService.teams;
+    this.teamService.selectedTeam.subscribe(data =>{
+      this.selectedTeam = data;
+    })
   }
 
   setSelectedTeam(team: Team) {
