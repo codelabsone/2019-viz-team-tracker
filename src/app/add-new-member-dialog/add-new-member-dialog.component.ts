@@ -1,5 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Team } from '../models/team.model';
+import { TeamService } from '../team.service';
 
 export interface DialogData {
 
@@ -16,10 +18,12 @@ export interface DialogData {
 })
 export class AddNewMemberDialogComponent implements OnInit {
   possibleJobTitles: string[] = [];
+  team: Team;
 
   constructor(
     public dialogRef: MatDialogRef<AddNewMemberDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private teamservice: TeamService) { }
 
   onNoclick(): void {
     this.dialogRef.close();
@@ -34,6 +38,9 @@ export class AddNewMemberDialogComponent implements OnInit {
       });
     });
     console.log(this.possibleJobTitles);
+    this.teamservice.selectedTeam.subscribe(data => {
+      this.team = data;
+    })
   }
 
   close() {
