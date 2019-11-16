@@ -454,48 +454,6 @@ export const MOCKTEAMS: Team[] = [
       "name": "EmptyTeam",
       'limitReachedError': false,
       "members": [
-        {
-          "avatar": "../assets/avatar.png",
-
-          "name": "Hickman Jenkins",
-          "email": "hickmanjenkins@dragbot.com",
-          "jobtitle": "Software Engineer"
-        },
-        {
-          "avatar": "../assets/avatar.png",
-
-          "name": "Herring Noel",
-          "email": "herringnoel@dragbot.com",
-          "jobtitle": "UX Engineer"
-        },
-        {
-          "avatar": "../assets/avatar.png",
-
-          "name": "Glover Donovan",
-          "email": "gloverdonovan@dragbot.com",
-          "jobtitle": "Quality Assurance Engineer"
-        },
-        {
-          "avatar": "../assets/avatar.png",
-
-          "name": "Brooks Davidson",
-          "email": "brooksdavidson@dragbot.com",
-          "jobtitle": "UX Engineer"
-        },
-        {
-          "avatar": "../assets/avatar.png",
-
-          "name": "Ratliff Workman",
-          "email": "ratliffworkman@dragbot.com",
-          "jobtitle": "Quality Assurance Engineer"
-        },
-        {
-          "avatar": "../assets/avatar.png",
-
-          "name": "Moreno Boyer",
-          "email": "morenoboyer@dragbot.com",
-          "jobtitle": "Software Engineer"
-        }
       ]
     }
   ]
