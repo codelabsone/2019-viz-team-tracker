@@ -1,20 +1,23 @@
 
-<mat-expansion-panel>
+<mat-expansion-panel [expanded]='isExpanded' (mouseenter)="tryExpand()" (mouseleave)="tryClose()">
   <mat-expansion-panel-header (click)="setSelectedTeam(team)">
     <mat-panel-title>
       {{team.name}}
     </mat-panel-title>
   </mat-expansion-panel-header>
-    <div cdkDropList cdkDropListOrientation="horizontal"
-      class="member-list team-member-avatar" 
+    <div class="member-list team-member-avatar"
+      cdkDropList cdkDropListOrientation="horizontal"
       (cdkDropListDropped)="drop($event, team)"
       [cdkDropListData]="team.members">
-          <div class="member-box" *ngFor="let member of team.members" cdkDrag>
-            <img matTooltip='{{member.name}}'
-            matTooltipPosition='above' 
-            class='member-avatar' 
-            src="{{member.avatar}}" 
-            alt="{{member.name}}">
+          <div class="member-box" *ngFor="let member of team.members"
+            cdkDrag
+            (cdkDragStarted)="dragStart()"
+            (cdkDragReleased)="dragStop()">
+              <img matTooltip='{{member.name}}'
+              matTooltipPosition='above' 
+              class='member-avatar' 
+              src="{{member.avatar}}" 
+              alt="{{member.name}}">
           </div>
     </div>
   <mat-action-row class="expansion-panel-tools">
