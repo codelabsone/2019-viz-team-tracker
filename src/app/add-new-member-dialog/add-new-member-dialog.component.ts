@@ -30,13 +30,14 @@ export class AddNewMemberDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.data.teams.forEach(team => {
-      team.members.forEach(member => {
+    this.team = this.data.team;
+   
+      this.team.members.forEach(member => {
         if (!this.possibleJobTitles.includes(member.jobtitle)) {
           this.possibleJobTitles.push(member.jobtitle)
         }
       });
-    });
+   
     console.log(this.possibleJobTitles);
     this.teamservice.selectedTeam.subscribe(data => {
       this.team = data;
