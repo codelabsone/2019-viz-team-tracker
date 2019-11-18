@@ -1,3 +1,30 @@
-<mat-dialog-content>
-  Add Member Dialog
+<mat-dialog-content class="dialog-box">
+  <div class="member-input">
+    <mat-form-field class="name-input">
+      <input matInput placeholder="First Name">
+    </mat-form-field>
+    <mat-form-field class="name-input">
+      <input matInput placeholder="Last Name">
+    </mat-form-field>
+  </div>
+  <div class="member-input">
+    <mat-form-field class="name-input">
+      <mat-select placeholder="Title">
+        <mat-option *ngFor="let title of possibleJobTitles" [value]="title">
+          {{title}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="name-input">
+      <mat-select placeholder="{{team.name}}">
+        <mat-option *ngFor="let team of data.teams" [value]="team.name">
+          {{team.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="member-input-buttons">
+    <button mat-button (click)="close()">Cancel</button>
+    <button mat-button>Submit</button>
+  </div>
 </mat-dialog-content>
