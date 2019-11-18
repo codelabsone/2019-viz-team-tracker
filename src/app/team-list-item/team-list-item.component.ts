@@ -35,7 +35,6 @@ export class TeamListItemComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
   
@@ -66,13 +65,11 @@ export class TeamListItemComponent implements OnInit {
   }
 
   dragStart() {
-    console.log("dragStarted");
     this.draggingService.dragging.next(true);
     this.fromThisTeam = true;
   }
 
   dragStop() {
-    console.log("dragReleased");
     this.draggingService.dragging.next(false);
     this.fromThisTeam = false;
   }
@@ -82,15 +79,12 @@ export class TeamListItemComponent implements OnInit {
   }
 
   tryExpand() {
-    console.log("tryExpand");
-    console.log(this.isDragging);
     if (this.isDragging && !this.isExpanded) {
       this.toggleExpand();
     }
   }
 
   tryClose() {
-    console.log("tryClose");
     if (this.isDragging && this.isExpanded && !this.fromThisTeam) {
       this.toggleExpand();
     }

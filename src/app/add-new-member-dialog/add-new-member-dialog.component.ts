@@ -37,8 +37,6 @@ export class AddNewMemberDialogComponent implements OnInit {
           this.possibleJobTitles.push(member.jobtitle)
         }
       });
-   
-    console.log(this.possibleJobTitles);
     this.teamservice.selectedTeam.subscribe(data => {
       this.team = data;
     })
