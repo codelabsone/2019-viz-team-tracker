@@ -1,11 +1,12 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, Output} from '@angular/core';
 import { Team } from '../models/team.model';
 import { Teammember } from '../models/member.model';
-import { MatExpansionPanel } from '@angular/material';
+import { MatExpansionPanel, throwToolbarMixedModesError } from '@angular/material';
 import { TeamService } from '../team.service';
 import { AddNewMemberDialogComponent } from '../add-new-member-dialog/add-new-member-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { moveItemInArray, CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
+import { moveItemInArray, CdkDragDrop, CdkDragStart, CdkDragRelease, transferArrayItem, CdkDrag} from '@angular/cdk/drag-drop';
+import { DraggingService } from '../dragging.service';
 
 @Component({
   selector: 'app-team-list-item',
@@ -15,13 +16,18 @@ import { moveItemInArray, CdkDragDrop, transferArrayItem } from '@angular/cdk/dr
 })
 export class TeamListItemComponent implements OnInit {
   @Input() team: Team;
-  constructor(private teamService: TeamService, public addMemberDialog: MatDialog) { }
+  isDragging: boolean = false;
+  isExpanded: boolean = false;
+  fromThisTeam: boolean;
 
-  ngOnInit() {
-    this.teamService.selectedTeam.subscribe(data =>{
-      this.selectedTeam = data;
+  constructor(private teamService: TeamService, public addMemberDialog: MatDialog, private draggingService: DraggingService) { }
+
+  ngOnInit() { 
+    this.draggingService.dragging.subscribe(data => {
+      this.isDragging = data;
     })
-  }
+
+   }
 
   openAddPersonDialog(): void {
     const dialogRef = this.addMemberDialog.open(AddNewMemberDialogComponent, {
@@ -57,5 +63,36 @@ export class TeamListItemComponent implements OnInit {
   startErrorTimer(team: Team) {
     team.limitReachedError = true;
     setTimeout(function(){team.limitReachedError = false}, 3000);
+  }
+
+  dragStart() {
+    console.log("dragStarted");
+    this.draggingService.dragging.next(true);
+    this.fromThisTeam = true;
+  }
+
+  dragStop() {
+    console.log("dragReleased");
+    this.draggingService.dragging.next(false);
+    this.fromThisTeam = false;
+  }
+
+  toggleExpand() {
+    this.isExpanded = !this.isExpanded;
+  }
+
+  tryExpand() {
+    console.log("tryExpand");
+    console.log(this.isDragging);
+    if (this.isDragging && !this.isExpanded) {
+      this.toggleExpand();
+    }
+  }
+
+  tryClose() {
+    console.log("tryClose");
+    if (this.isDragging && this.isExpanded && !this.fromThisTeam) {
+      this.toggleExpand();
+    }
   }
 }
