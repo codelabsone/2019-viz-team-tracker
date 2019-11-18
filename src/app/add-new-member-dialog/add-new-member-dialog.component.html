@@ -16,8 +16,10 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field class="name-input">
-      <mat-select placeholder="{{team.name}}">
-        <mat-option *ngFor="let team of data.teams" [value]="team.name">
+      <mat-select 
+      placeholder="Team"
+      [value]="selectedTeam">
+        <mat-option *ngFor="let team of data.teams" [value]="team">
           {{team.name}}
         </mat-option>
       </mat-select>

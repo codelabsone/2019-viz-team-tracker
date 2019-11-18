@@ -19,6 +19,7 @@ export interface DialogData {
 export class AddNewMemberDialogComponent implements OnInit {
   possibleJobTitles: string[] = [];
   team: Team;
+  selectedTeam: Team;
 
   constructor(
     public dialogRef: MatDialogRef<AddNewMemberDialogComponent>,
@@ -39,7 +40,7 @@ export class AddNewMemberDialogComponent implements OnInit {
     });
     console.log(this.possibleJobTitles);
     this.teamservice.selectedTeam.subscribe(data => {
-      this.team = data;
+      this.selectedTeam = data;
     })
   }
 
