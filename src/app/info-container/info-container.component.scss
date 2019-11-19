@@ -1,3 +1,5 @@
+@import '../../styles';
+
 .info-container {
     width: 95%;
     height: 80vh;
@@ -35,7 +37,7 @@
 
 .info-team-member-details {
     margin: 1vh;
-    color: darkslategray;
+    color: $fontcolor;
 }
 
 .selected-member {
@@ -72,7 +74,7 @@
 }
 
 .selected-member-info {
-    color: #5e6f79;
+    color: $fontcolor;
     display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -80,7 +82,7 @@
   font-size: x-large;
 }
 mat-card-title {
-    color: #5e6f79;
+    color: $fontcolor;
     padding: 10px 10px;
 }
 
@@ -102,7 +104,7 @@ mat-card-title {
 .info-panel-action-row {
     mat-icon {
         display: flex;
-        color: rgba(69, 90, 100, .87);
+        color: $fontcolor;
         margin: 15px;
     }
     border-top: 1px solid lightgray;

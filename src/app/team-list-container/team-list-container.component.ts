@@ -27,7 +27,11 @@ export class TeamListContainerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.teams = this.teamService.teams;
+    this.teamService.getAllTeams().subscribe(data =>{
+      data.forEach(team => {
+        this.teams.push(new Team(team));
+      });
+    });
     this.teamService.selectedTeam.subscribe(data =>{
       this.selectedTeam = data;
     })

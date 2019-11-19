@@ -1,3 +1,5 @@
+@import '../../styles';
+
 mat-card#teams-list {
     width: 95%;
     height: 85vh;
@@ -14,7 +16,7 @@ mat-card#teams-list {
     }
 
     mat-card-title {
-        color: #5e6f79;
+        color: $fontcolor;
         padding: 10px 10px;
         flex-grow: 0;
         border-bottom: 1px solid lightgray;
