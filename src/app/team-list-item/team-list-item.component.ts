@@ -7,6 +7,7 @@ import { AddNewMemberDialogComponent } from '../add-new-member-dialog/add-new-me
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { moveItemInArray, CdkDragDrop, CdkDragStart, CdkDragRelease, transferArrayItem, CdkDrag } from '@angular/cdk/drag-drop';
 import { DraggingService } from '../dragging.service';
+import { TeamFromApi } from '../models/teamFromApi.model';
 
 @Component({
   selector: 'app-team-list-item',
@@ -20,18 +21,25 @@ export class TeamListItemComponent implements OnInit {
   isExpanded: boolean = false;
   fromThisTeam: boolean;
 
+  allTeams: Team[] = [];
+
   constructor(private teamService: TeamService, public addMemberDialog: MatDialog, private draggingService: DraggingService) { }
 
   ngOnInit() {
     this.draggingService.dragging.subscribe(data => {
       this.isDragging = data;
     })
+    this.teamService.getAllTeams().subscribe((teamsFromApi: TeamFromApi[]) => {
+      teamsFromApi.forEach(team => {
+        this.allTeams.push(new Team(team));
+      })
+    })
 
   }
 
   openAddPersonDialog(): void {
     const dialogRef = this.addMemberDialog.open(AddNewMemberDialogComponent, {
-      data: { team: this.team, allTeams: this.teamService.teams }
+      data: { team: this.team, allTeams: this.allTeams }
     });
 
     dialogRef.afterClosed().subscribe(result => {

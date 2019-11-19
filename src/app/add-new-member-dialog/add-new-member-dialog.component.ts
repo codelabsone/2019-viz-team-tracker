@@ -19,7 +19,7 @@ export interface DialogData {
   styleUrls: ['./add-new-member-dialog.component.scss']
 })
 export class AddNewMemberDialogComponent implements OnInit {
-  possibleJobTitles: string[] = [];
+  possibleJobTitles: string[] = ['Quality Engineer', 'Software Engineer', 'UX Engineer'];
   team: Team;
   selectedTeam: Team;
 
