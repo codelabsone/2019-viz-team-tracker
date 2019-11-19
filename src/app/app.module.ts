@@ -24,6 +24,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { AddNewTeamDialogComponent } from './add-new-team-dialog/add-new-team-dialog.component';
 import { TeamListItemComponent } from './team-list-item/team-list-item.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     MatSelectModule,
     MatFormFieldModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,14 +1,14 @@
-<div class="team-dialog">
+<form class="team-dialog" [formGroup]="teamForm">
   <mat-form-field class='team-name'>
-    <input matInput placeholder="Team Name">
+    <input matInput placeholder="Team Name" formControlName="name">
   </mat-form-field>
 
   <mat-form-field class="team-description">
-    <textarea matInput placeholder="Team Discription"></textarea>
+    <textarea matInput placeholder="Team Discription" formControlName="description"></textarea>
   </mat-form-field>
   <div class="team-input-buttons">
     <button mat-button (click)="close()">Cancel</button>
-    <button mat-button>Submit</button>
+    <button mat-button (click)="addTeam(teamForm)">Submit</button>
   </div>
-</div>
+</form>
 
