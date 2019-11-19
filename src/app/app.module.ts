@@ -22,6 +22,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { AddNewTeamDialogComponent } from './add-new-team-dialog/add-new-team-dialog.component';
+import { TeamListItemComponent } from './team-list-item/team-list-item.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { AddNewTeamDialogComponent } from './add-new-team-dialog/add-new-team-di
     InfoContainerComponent,
     TeamListContainerComponent,
     AddNewMemberDialogComponent,
-    AddNewTeamDialogComponent
+    AddNewTeamDialogComponent,
+    TeamListItemComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { AddNewTeamDialogComponent } from './add-new-team-dialog/add-new-team-di
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

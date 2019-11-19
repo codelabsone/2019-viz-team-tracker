@@ -1,32 +1,10 @@
 <mat-card id="teams-list">
    <mat-card-title>Teams</mat-card-title>
-   <mat-divider></mat-divider>
    <mat-card-content>
       <mat-accordion multi="true" cdkDropListGroup>
-         <mat-expansion-panel *ngFor=" let team of teams">
-            <mat-expansion-panel-header (click)="setSelectedTeam(team)">
-               <mat-panel-title>
-                  {{team.name}}
-               </mat-panel-title>
-            </mat-expansion-panel-header>
-               <div cdkDropList cdkDropListOrientation="horizontal"
-                  class="member-list team-member-avatar"
-                  (cdkDropListDropped)="drop($event, team)"
-                  [cdkDropListData]="team.members">
-                     <div class="member-box" *ngFor="let member of team.members" cdkDrag>
-                        <img matTooltip='{{member.name}}'
-                        matTooltipPosition='above'
-                        class='member-avatar'
-                        src="{{member.avatar}}"
-                        alt="{{member.name}}">
-                     </div>
-               </div>
-            <mat-action-row class="expansion-panel-tools">
-               <span class="max-size-error" *ngIf="team.limitReachedError">Team size limited to 12 members.</span>
-               <span class="team-counter">{{team.members.length}}/12</span>
-               <mat-icon (click)="openAddPersonDialog()">person_add</mat-icon>
-            </mat-action-row>
-         </mat-expansion-panel>
+         <div *ngFor="let currentTeam of teams">
+            <app-team-list-item [team]="currentTeam"></app-team-list-item>
+         </div>
       </mat-accordion>
     </mat-card-content>
     <mat-action-row>
