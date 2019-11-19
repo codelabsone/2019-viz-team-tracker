@@ -25,6 +25,7 @@ import { AddNewTeamDialogComponent } from './add-new-team-dialog/add-new-team-di
 import { TeamListItemComponent } from './team-list-item/team-list-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditTeamDialogComponent } from './edit-team-dialog/edit-team-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TeamListContainerComponent,
     AddNewMemberDialogComponent,
     AddNewTeamDialogComponent,
-    TeamListItemComponent
+    TeamListItemComponent,
+    EditTeamDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +62,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [AddNewMemberDialogComponent, AddNewTeamDialogComponent]
+  entryComponents: [AddNewMemberDialogComponent, AddNewTeamDialogComponent, EditTeamDialogComponent]
 })
 export class AppModule { }

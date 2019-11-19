@@ -40,7 +40,7 @@
     </mat-card-content>
     <div class="info-panel-action-row" *ngIf="selectedMember === null">
       <mat-icon matTooltip="{{team.name}} History" matTooltipPosition='above'>history</mat-icon>
-      <mat-icon matTooltip='Edit {{team.name}}' matTooltipPosition='above'>edit</mat-icon>
+      <mat-icon matTooltip='Edit {{team.name}}' matTooltipPosition='above' (click)="openEditTeamDialog()">edit</mat-icon>
       <mat-icon matTooltip='Archive {{team.name}}' matTooltipPosition='above'>archive</mat-icon>
     </div>
     <div class="info-panel-action-row" *ngIf="selectedMember !== null">

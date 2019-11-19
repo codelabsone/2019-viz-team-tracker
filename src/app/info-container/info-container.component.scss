@@ -106,6 +106,7 @@ mat-card-title {
         display: flex;
         color: $fontcolor;
         margin: 15px;
+        cursor: pointer;
     }
     border-top: 1px solid lightgray;
     flex-grow: 0;
