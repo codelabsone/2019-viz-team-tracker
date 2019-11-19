@@ -1,3 +1,5 @@
+@import '../../styles';
+
 mat-card#teams-list {
     width: 95%;
     height: 85vh;
@@ -14,7 +16,7 @@ mat-card#teams-list {
     }
 
     mat-card-title {
-        color: #5e6f79;
+        color: $fontcolor;
         padding: 10px 10px;
         flex-grow: 0;
         border-bottom: 1px solid lightgray;
@@ -40,7 +42,7 @@ mat-card#teams-list {
     mat-icon {
         display: flex;
         justify-content: right;
-        color: rgba(69, 90, 100, .87);
+        color: $fontcolor;
         margin-right: 12px;
         cursor: pointer;
         font-size: 200%;
