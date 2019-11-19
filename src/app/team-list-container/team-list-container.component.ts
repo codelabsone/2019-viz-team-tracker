@@ -18,9 +18,12 @@ export class TeamListContainerComponent implements OnInit {
   constructor(private teamService: TeamService, public addMemberDialog: MatDialog) {}
 
   openAddPersonDialog(): void {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = "400px";
-    this.addMemberDialog.open(AddNewMemberDialogComponent, dialogConfig);
+    const dialogRef = this.addMemberDialog.open(AddNewMemberDialogComponent, {
+      data: {teams: this.teams}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
   ngOnInit() {

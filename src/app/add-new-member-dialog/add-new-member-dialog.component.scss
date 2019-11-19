@@ -1,1 +1,29 @@
 @import '../../styles';
+
+.dialog-box {
+    // padding: 3vw;
+    // padding-top: 2vh;
+}
+
+
+.member-input {
+    display: flex;
+    flex-direction: row;
+}
+
+.member-input-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    button {
+        margin-right: 1.25vw;
+        font-weight: lighter;
+    }
+}
+
+.name-input {
+    display: flex;
+    margin-left: .75vw;
+    margin-right: .75vw;
+}
+
