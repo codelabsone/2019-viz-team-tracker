@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Team } from '../models/team.model';
 import { TeamService } from '../team.service';
+import { PicsumService } from '../picsum.service';
 
 export interface DialogData {
 
@@ -19,11 +20,13 @@ export interface DialogData {
 export class AddNewMemberDialogComponent implements OnInit {
   possibleJobTitles: string[] = [];
   team: Team;
+  images: any;
 
   constructor(
     public dialogRef: MatDialogRef<AddNewMemberDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private teamservice: TeamService) { }
+    private teamservice: TeamService,
+    private picsumService: PicsumService) { }
 
   onNoclick(): void {
     this.dialogRef.close();
@@ -39,6 +42,9 @@ export class AddNewMemberDialogComponent implements OnInit {
       });
     this.teamservice.selectedTeam.subscribe(data => {
       this.team = data;
+    });
+    this.picsumService.getImages(1, 100).subscribe(data => {
+      console.log(data);
     })
   }
 
