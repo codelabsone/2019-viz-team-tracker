@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Team } from './models/team.model';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { MOCKTEAMS } from '../assets/mockteams';
 import { TeamFromApi } from './models/teamFromApi.model';
 
 

@@ -1,0 +1,17 @@
+<mat-dialog-content class="dialog-box">
+  <div class="team-input">
+    <mat-form-field class="name-input">
+      <input matInput placeholder="Team Name" value="{{name}}">
+    </mat-form-field>
+  </div>
+
+  <div class="team-input">
+    <mat-form-field class="description-input">
+      <input matInput placeholder="Team Description" value="{{description}}">
+    </mat-form-field>
+  </div>
+  <div class="team-input-buttons">
+    <button mat-button (click)="close()">Cancel</button>
+    <button mat-button>Submit</button>
+  </div>
+</mat-dialog-content>

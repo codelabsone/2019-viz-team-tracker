@@ -24,6 +24,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { AddNewTeamDialogComponent } from './add-new-team-dialog/add-new-team-dialog.component';
 import { TeamListItemComponent } from './team-list-item/team-list-item.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EditTeamDialogComponent } from './edit-team-dialog/edit-team-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
     TeamListContainerComponent,
     AddNewMemberDialogComponent,
     AddNewTeamDialogComponent,
-    TeamListItemComponent
+    TeamListItemComponent,
+    EditTeamDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +59,6 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [AddNewMemberDialogComponent, AddNewTeamDialogComponent]
+  entryComponents: [AddNewMemberDialogComponent, AddNewTeamDialogComponent, EditTeamDialogComponent]
 })
 export class AppModule { }

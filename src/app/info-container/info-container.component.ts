@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Team } from '../models/team.model';
 import { Teammember } from '../models/member.model';
 import { TeamService } from '../team.service';
+import { MatDialog } from '@angular/material';
+import { EditTeamDialogComponent } from '../edit-team-dialog/edit-team-dialog.component';
 
 
 @Component({
@@ -14,14 +16,14 @@ export class InfoContainerComponent implements OnInit {
 team: Team;
 selectedMember: Teammember = null;
 
-  constructor(private teamservice: TeamService) { 
+  constructor(private teamservice: TeamService, public editTeamDialog: MatDialog) { 
 
   }
 
   ngOnInit() {
     this.teamservice.selectedTeam.subscribe(data => {
         this.team = data;
-      })
+      });
     }
 
   onClickMe(member: Teammember) {
@@ -30,5 +32,14 @@ selectedMember: Teammember = null;
 
   returnClick() {
     this.selectedMember = null;
+  }
+
+  openEditTeamDialog() {
+    // console.log("dialog opened!");
+    const dialogRef = this.editTeamDialog.open(EditTeamDialogComponent, { data: { team: this.team } });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
   }
 }

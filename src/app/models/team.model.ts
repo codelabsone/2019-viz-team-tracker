@@ -5,9 +5,11 @@ export class Team {
     name: string;
     members: Teammember[] = [];
     limitReachedError: boolean = false;
+    description: string;
 
     constructor(request: TeamFromApi) {
         this.name = request.name;
+        this.description = request.description;
         request.members.forEach(member => {
             this.members.push(new Teammember(member));
         });
