@@ -5,11 +5,8 @@ import { TeamService } from '../team.service';
 import { AddNewMemberDialogComponent } from '../add-new-member-dialog/add-new-member-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { moveItemInArray, CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
-<<<<<<< HEAD
 import { AddNewTeamDialogComponent } from '../add-new-team-dialog/add-new-team-dialog.component';
-=======
 import { PicsumService } from '../picsum.service';
->>>>>>> master
 
 @Component({
   selector: 'app-team-list-container',
@@ -23,8 +20,12 @@ export class TeamListContainerComponent implements OnInit {
   constructor(private teamService: TeamService, public addMemberDialog: MatDialog, public addNewTeamDialog: MatDialog) { }
 
   ngOnInit() {
-    this.teams = this.teamService.teams;
-    this.teamService.selectedTeam.subscribe(data => {
+    this.teamService.getAllTeams().subscribe(data =>{
+      data.forEach(team => {
+        this.teams.push(new Team(team));
+      });
+    });
+    this.teamService.selectedTeam.subscribe(data =>{
       this.selectedTeam = data;
     })
   }
@@ -38,7 +39,6 @@ export class TeamListContainerComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
   openAddNewTeamDialog(): void {
     const dialogRef = this.addNewTeamDialog.open(AddNewTeamDialogComponent, {
       data: { teams: this.teams }
@@ -47,18 +47,8 @@ export class TeamListContainerComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
-=======
-  ngOnInit() {
-    this.teamService.getAllTeams().subscribe(data =>{
-      data.forEach(team => {
-        this.teams.push(new Team(team));
-      });
-    });
-    this.teamService.selectedTeam.subscribe(data =>{
-      this.selectedTeam = data;
-    })
->>>>>>> master
   }
+  
 
   setSelectedTeam(team: Team) {
     this.teamService.selectedTeam.next(team);
