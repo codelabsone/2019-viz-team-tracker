@@ -21,6 +21,7 @@ import { AddNewMemberDialogComponent } from './add-new-member-dialog/add-new-mem
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { AddNewTeamDialogComponent } from './add-new-team-dialog/add-new-team-dialog.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatSelectModule} from '@angular/material/select';
     HeaderComponent,
     InfoContainerComponent,
     TeamListContainerComponent,
-    AddNewMemberDialogComponent
+    AddNewMemberDialogComponent,
+    AddNewTeamDialogComponent
   ],
   imports: [
     BrowserModule,

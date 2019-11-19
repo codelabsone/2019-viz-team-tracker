@@ -1,0 +1,25 @@
+.team-imput{
+  display: flex;
+  flex-direction: row;
+}
+
+.team-input-buttons {
+display: flex;
+flex-direction: row;
+}
+
+.team-input-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  button {
+    margin-right: 1.25vs;
+    font-weight: lighter;
+  }
+}
+
+.name-input {
+  display: flex;
+  margin-left: .75vw;
+margin-right: .75vw;
+}

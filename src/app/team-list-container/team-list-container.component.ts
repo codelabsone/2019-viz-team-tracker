@@ -5,6 +5,7 @@ import { TeamService } from '../team.service';
 import { AddNewMemberDialogComponent } from '../add-new-member-dialog/add-new-member-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { moveItemInArray, CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
+import { AddNewTeamDialogComponent} from '../add-new-team-dialog/add-new-team-dialog.component';
 
 @Component({
   selector: 'app-team-list-container',
@@ -21,6 +22,12 @@ export class TeamListContainerComponent implements OnInit {
     const dialogRef = this.addMemberDialog.open(AddNewMemberDialogComponent, {
       data: {teams: this.teams}
     });
+
+// openAddTeamDialog(): void {
+//   const dialogRef = this.addTeamDialog.open(AddNewTeamDialogComponent, {
+//     data: {teams: this.teams}
+//   });
+// }
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
