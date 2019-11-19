@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, Output} from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Team } from '../models/team.model';
 import { Teammember } from '../models/member.model';
 import { MatExpansionPanel, throwToolbarMixedModesError } from '@angular/material';
 import { TeamService } from '../team.service';
 import { AddNewMemberDialogComponent } from '../add-new-member-dialog/add-new-member-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { moveItemInArray, CdkDragDrop, CdkDragStart, CdkDragRelease, transferArrayItem, CdkDrag} from '@angular/cdk/drag-drop';
+import { moveItemInArray, CdkDragDrop, CdkDragStart, CdkDragRelease, transferArrayItem, CdkDrag } from '@angular/cdk/drag-drop';
 import { DraggingService } from '../dragging.service';
 
 @Component({
@@ -22,46 +22,46 @@ export class TeamListItemComponent implements OnInit {
 
   constructor(private teamService: TeamService, public addMemberDialog: MatDialog, private draggingService: DraggingService) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.draggingService.dragging.subscribe(data => {
       this.isDragging = data;
     })
 
-   }
+  }
 
   openAddPersonDialog(): void {
     const dialogRef = this.addMemberDialog.open(AddNewMemberDialogComponent, {
-      data: {team: this.team}
+      data: { team: this.team, allTeams: this.teamService.teams }
     });
 
     dialogRef.afterClosed().subscribe(result => {
     });
   }
-  
+
   setSelectedTeam(team: Team) {
     this.teamService.selectedTeam.next(team);
   }
 
   drop(event: CdkDragDrop<Teammember[]>, team: Team) {
     if (event.previousContainer === event.container) {
-        moveItemInArray(team.members, event.previousIndex, event.currentIndex);
+      moveItemInArray(team.members, event.previousIndex, event.currentIndex);
     } else {
       if (event.container.data.length < 12) {
         transferArrayItem(event.previousContainer.data,
           event.container.data,
           event.previousIndex,
           event.currentIndex);
-        }
-        else {
-          this.startErrorTimer(team);
-        }
+      }
+      else {
+        this.startErrorTimer(team);
+      }
     }
 
   }
 
   startErrorTimer(team: Team) {
     team.limitReachedError = true;
-    setTimeout(function(){team.limitReachedError = false}, 3000);
+    setTimeout(function () { team.limitReachedError = false }, 3000);
   }
 
   dragStart() {

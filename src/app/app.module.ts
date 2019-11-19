@@ -48,7 +48,8 @@ import { TeamListItemComponent } from './team-list-item/team-list-item.component
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent],

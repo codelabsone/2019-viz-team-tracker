@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Team } from '../models/team.model';
 import { TeamService } from '../team.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { AddMemberDialogData } from '../interfaces/add-member-dialog-data.interface';
 
 export interface DialogData {
 
@@ -21,26 +23,36 @@ export class AddNewMemberDialogComponent implements OnInit {
   team: Team;
   selectedTeam: Team;
 
+  memberForm = new FormGroup({
+    pathToPhoto: new FormControl(''),
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    title: new FormControl(''),
+    team: new FormControl('')
+  });
+
+
   constructor(
     public dialogRef: MatDialogRef<AddNewMemberDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: AddMemberDialogData,
     private teamservice: TeamService) { }
 
-  onNoclick(): void {
-    this.dialogRef.close();
-  }
-
   ngOnInit() {
-    this.team = this.data.team;
-   
-      this.team.members.forEach(member => {
+    this.data.allTeams.forEach(team => {
+      team.members.forEach(member => {
         if (!this.possibleJobTitles.includes(member.jobtitle)) {
           this.possibleJobTitles.push(member.jobtitle)
         }
       });
+    });
+    
     this.teamservice.selectedTeam.subscribe(data => {
       this.selectedTeam = data;
     })
+  }
+
+  onNoclick(): void {
+    this.dialogRef.close();
   }
 
   close() {
