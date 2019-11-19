@@ -18,9 +18,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddNewMemberDialogComponent } from './add-new-member-dialog/add-new-member-dialog.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import { AddNewTeamDialogComponent } from './add-new-team-dialog/add-new-team-dialog.component';
 import { TeamListItemComponent } from './team-list-item/team-list-item.component';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -31,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     InfoContainerComponent,
     TeamListContainerComponent,
     AddNewMemberDialogComponent,
+    AddNewTeamDialogComponent,
     TeamListItemComponent
   ],
   imports: [
@@ -55,6 +57,6 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [AddNewMemberDialogComponent]
+  entryComponents: [AddNewMemberDialogComponent, AddNewTeamDialogComponent]
 })
 export class AppModule { }

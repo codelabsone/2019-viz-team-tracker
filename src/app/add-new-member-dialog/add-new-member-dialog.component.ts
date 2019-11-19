@@ -4,6 +4,7 @@ import { Team } from '../models/team.model';
 import { TeamService } from '../team.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AddMemberDialogData } from '../interfaces/add-member-dialog-data.interface';
+import { PicsumService } from '../picsum.service';
 
 export interface DialogData {
 
@@ -35,7 +36,9 @@ export class AddNewMemberDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<AddNewMemberDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: AddMemberDialogData,
-    private teamservice: TeamService) { }
+    private teamservice: TeamService,
+    private picsumService: PicsumService 
+    ) { }
 
   ngOnInit() {
     this.data.allTeams.forEach(team => {
@@ -48,6 +51,10 @@ export class AddNewMemberDialogComponent implements OnInit {
     
     this.teamservice.selectedTeam.subscribe(data => {
       this.selectedTeam = data;
+    });
+    
+    this.picsumService.getImages(1, 100).subscribe(data => {
+      console.log(data);
     })
   }
 
