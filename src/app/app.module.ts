@@ -24,6 +24,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { AddNewTeamDialogComponent } from './add-new-team-dialog/add-new-team-dialog.component';
 import { TeamListItemComponent } from './team-list-item/team-list-item.component';
 import { HttpClientModule } from '@angular/common/http';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    HttpClientModule
+    HttpClientModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent],

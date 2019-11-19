@@ -3,6 +3,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Team } from '../models/team.model';
 import { TeamService } from '../team.service';
 import { PicsumService } from '../picsum.service';
+import { PicsumPhoto } from '../interfaces/picsum-photo.interface';
+import { Picture } from '../models/picture.model';
+import { PageEvent, MatPaginator } from '@angular/material';
 
 export interface DialogData {
 
@@ -20,7 +23,10 @@ export interface DialogData {
 export class AddNewMemberDialogComponent implements OnInit {
   possibleJobTitles: string[] = [];
   team: Team;
-  images: any;
+  images: Picture[] = [];
+  firstImage: number = 0;
+  lastImage: number = 5;
+
 
   constructor(
     public dialogRef: MatDialogRef<AddNewMemberDialogComponent>,
@@ -43,9 +49,17 @@ export class AddNewMemberDialogComponent implements OnInit {
     this.teamservice.selectedTeam.subscribe(data => {
       this.team = data;
     });
-    this.picsumService.getImages(1, 100).subscribe(data => {
-      console.log(data);
+    this.picsumService.getImages(1, 100).subscribe((picsumPhotos: PicsumPhoto[]) => {
+      picsumPhotos.forEach((photo: PicsumPhoto) => {
+        this.images.push(new Picture(photo.id));
+      });
     })
+  }
+
+  setPagedPhotos(event: PageEvent, matPaginator: MatPaginator) {
+    const pageIndex = matPaginator.pageIndex * matPaginator.pageSize;
+    this.firstImage = pageIndex;
+    this.lastImage = 5 + pageIndex;
   }
 
   close() {

@@ -1,4 +1,19 @@
 <mat-dialog-content class="dialog-box">
+  <div *ngIf="images.length > 0">
+      <span *ngFor="let image of images.slice(firstImage, lastImage)">
+        <img src="{{image.url}}" alt="">
+      </span>
+  </div>
+  
+  <mat-paginator #matPaginator
+    [length]="images.length"
+    [pageSize]="5"
+    (page)="setPagedPhotos($event, matPaginator)"
+    >
+  </mat-paginator>
+
+
+
   <div class="member-input">
     <mat-form-field class="name-input">
       <input matInput placeholder="First Name">
