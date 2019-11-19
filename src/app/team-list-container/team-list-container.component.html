@@ -31,6 +31,6 @@
     </mat-card-content>
     <mat-action-row>
       <mat-icon *ngIf="selectedTeam !== null" matTooltip="{{selectedTeam.name}} History" matTooltipPosition='above'>history</mat-icon>
-      <mat-icon matTooltip="Add Team" matTooltipPosition='above'>add_box</mat-icon>
+      <mat-icon (click)='openAddNewTeamDialog()' matTooltip="Add Team" matTooltipPosition='above'>add_box</mat-icon> 
     </mat-action-row>
   </mat-card>

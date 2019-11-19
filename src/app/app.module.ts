@@ -52,6 +52,6 @@ import { AddNewTeamDialogComponent } from './add-new-team-dialog/add-new-team-di
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [AddNewMemberDialogComponent]
+  entryComponents: [AddNewMemberDialogComponent, AddNewTeamDialogComponent]
 })
 export class AppModule { }

@@ -1,11 +1,16 @@
-.team-imput{
-  display: flex;
-  flex-direction: row;
+.team-dialog {
+  width: 50vw;
 }
 
-.team-input-buttons {
-display: flex;
-flex-direction: row;
+.team-name{
+  width: 100%;
+  input{
+    width: 100%;
+  }
+}
+
+.team-description {
+  width: 100%;
 }
 
 .team-input-buttons {
@@ -13,13 +18,7 @@ flex-direction: row;
   flex-direction: row;
   justify-content: flex-end;
   button {
-    margin-right: 1.25vs;
-    font-weight: lighter;
+      margin-right: 1.25vw;
+      font-weight: lighter;
   }
-}
-
-.name-input {
-  display: flex;
-  margin-left: .75vw;
-margin-right: .75vw;
 }
