@@ -1,13 +1,15 @@
 import { Teammember } from './member.model';
+import { TeamFromApi } from './teamFromApi.model';
 
 export class Team {
     name: string;
-    members: Teammember[];
+    members: Teammember[] = [];
     limitReachedError: boolean = false;
 
-    constructor(name: string){
-        this.name = name;
-        this.members = [];
+    constructor(request: TeamFromApi) {
+        this.name = request.name;
+        request.members.forEach(member => {
+            this.members.push(new Teammember(member));
+        });
     }
-
 }
