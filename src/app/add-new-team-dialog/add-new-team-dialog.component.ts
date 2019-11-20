@@ -1,10 +1,18 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TeamService } from '../team.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material';
 
 export interface DialogData {
   
+}
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
 }
 
 
@@ -15,9 +23,12 @@ export interface DialogData {
 })
 export class AddNewTeamDialogComponent {
   possibleTeamNames: string[] = [];
+  teamError: boolean = false;
+
+  matcher = new MyErrorStateMatcher;
 
   teamForm = new FormGroup({
-    name: new FormControl(''),
+    name: new FormControl('', [Validators.required]),
     description: new FormControl('')
   });
 
@@ -41,9 +52,13 @@ export class AddNewTeamDialogComponent {
       description:teamForm.get('description').value
     }
 
-    this.teamservice.addTeam(team).subscribe(data => {
-      console.log(data);
-    this.close()});
+    if (team.name.length < 1) {
+      this.teamError = true;
+    } else {
+      this.teamservice.addTeam(team).subscribe(data => {
+        console.log(data);
+      this.close()});
+    }
 
   }
 }
