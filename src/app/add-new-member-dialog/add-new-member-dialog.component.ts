@@ -26,6 +26,7 @@ export class AddNewMemberDialogComponent implements OnInit {
   images: Picture[] = [];
   firstImage: number = 0;
   lastImage: number = 5;
+  selectedImage: Picture;
 
 
   constructor(
@@ -64,6 +65,10 @@ export class AddNewMemberDialogComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
+  }
+
+  setSelectedPic(image: Picture) {
+    this.selectedImage = image;
   }
 
 }

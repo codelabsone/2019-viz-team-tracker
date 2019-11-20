@@ -1,7 +1,7 @@
 <mat-dialog-content class="dialog-box">
   <div *ngIf="images.length > 0">
-      <span *ngFor="let image of images.slice(firstImage, lastImage)">
-        <img src="{{image.url}}" alt="">
+      <span class="image-container" *ngFor="let image of images.slice(firstImage, lastImage)">
+        <img [ngClass]="image === selectedImage ? 'selectedImage' : 'images'" (click)="setSelectedPic(image)" src="{{image.url}}" alt="">
       </span>
   </div>
   

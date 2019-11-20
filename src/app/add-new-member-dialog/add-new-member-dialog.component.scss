@@ -27,3 +27,18 @@
     margin-right: .75vw;
 }
 
+.images {
+    height: 100px;
+    width: 100px;
+    opacity: .5;
+}
+
+.image-container {
+    margin: 8px;
+}
+
+.selectedImage {
+    height: 100px;
+    width: 100px;
+    border-bottom: solid #ff4e00;
+}
