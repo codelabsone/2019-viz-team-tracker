@@ -1,0 +1,24 @@
+.dialog-box {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .name-input {
+        width: 100%;
+    }
+    
+    .description-input {
+        width: 100%;
+    }
+    
+    .team-input-buttons {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        button {
+            margin-right: 1.25vw;
+            font-weight: lighter;
+        }
+    }
+}

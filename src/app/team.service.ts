@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Team } from './models/team.model';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { MOCKTEAMS } from '../assets/mockteams';
 import { TeamFromApi } from './models/teamFromApi.model';
 
 
@@ -18,6 +17,10 @@ export class TeamService {
 
   getAllTeams(): Observable<TeamFromApi[]> {
     return this.http.get<TeamFromApi[]>('https://viz-teams-back.herokuapp.com/team');
+  }
+
+  addTeam(team: any) {
+    return this.http.post('https://viz-teams-back.herokuapp.com/team', team);
   }
 
 }

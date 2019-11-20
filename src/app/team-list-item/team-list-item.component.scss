@@ -12,6 +12,14 @@
     display: flex;
     width: 100%;
     align-items: center;
+    flex-direction: row;
+}
+
+.member-list-empty {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    text-align: center;
 }
 
 .member-avatar {

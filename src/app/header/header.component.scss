@@ -5,18 +5,16 @@
 }
 
 .header-logo {
-  height: 30px;
+  height: 32px;
 }
 
 .mat-toolbar-single-row {
-  height: 7vh;
+  height: 64px;
 }
 
 .header-logo-border {
   border-right: 1px solid #cc3e00;
   padding-right: 17px;
-  padding-top: 6px;
-  padding-bottom: 6px;
 }
 
 .header-app-name {
@@ -29,6 +27,7 @@
 .header-username {
   color: white;
   padding: 0 10px;
+  font-size: 21px;
 }
 
 .header-left { 
@@ -38,6 +37,9 @@
 .header-title {
   margin: auto;
   padding-left: 5px;
+  h1 {
+    font-size: 24px;
+  }
 }
 
 .lighter-font {

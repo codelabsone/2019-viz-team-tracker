@@ -25,6 +25,9 @@ import { AddNewTeamDialogComponent } from './add-new-team-dialog/add-new-team-di
 import { TeamListItemComponent } from './team-list-item/team-list-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditTeamDialogComponent } from './edit-team-dialog/edit-team-dialog.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     TeamListContainerComponent,
     AddNewMemberDialogComponent,
     AddNewTeamDialogComponent,
-    TeamListItemComponent
+    TeamListItemComponent,
+    EditTeamDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -54,10 +58,15 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatInputModule,
     MatSelectModule,
     HttpClientModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatFormFieldModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [AddNewMemberDialogComponent, AddNewTeamDialogComponent]
+  entryComponents: [AddNewMemberDialogComponent, AddNewTeamDialogComponent, EditTeamDialogComponent]
 })
 export class AppModule { }

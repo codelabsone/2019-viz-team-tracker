@@ -5,7 +5,12 @@
       {{team.name}}
     </mat-panel-title>
   </mat-expansion-panel-header>
-    <div class="member-list team-member-avatar"
+  <div class="member-list empty"
+  *ngIf="team.members.length === 0">
+    No members on this team.
+  </div>
+  <div *ngIf="team.members.length !== 0" 
+      class="member-list team-member-avatar"
       cdkDropList cdkDropListOrientation="horizontal"
       (cdkDropListDropped)="drop($event, team)"
       [cdkDropListData]="team.members">

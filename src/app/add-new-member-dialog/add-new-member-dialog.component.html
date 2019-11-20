@@ -30,11 +30,10 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+
     <mat-form-field class="name-input">
-      <mat-select placeholder="{{team.name}}">
-        <mat-option *ngFor="let team of data.teams" [value]="team.name">
-          {{team.name}}
-        </mat-option>
+      <mat-select placeholder="Team" formControlName="team">
+        <mat-option *ngFor="let team of data.allTeams" value="{{team.id}}">{{team.name}}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
