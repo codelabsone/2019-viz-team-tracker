@@ -26,6 +26,7 @@ import { TeamListItemComponent } from './team-list-item/team-list-item.component
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditTeamDialogComponent } from './edit-team-dialog/edit-team-dialog.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { EditTeamDialogComponent } from './edit-team-dialog/edit-team-dialog.com
     MatFormFieldModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

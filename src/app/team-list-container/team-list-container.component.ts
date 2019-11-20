@@ -16,11 +16,13 @@ import { PicsumService } from '../picsum.service';
 export class TeamListContainerComponent implements OnInit {
   teams: Team[] = [];
   selectedTeam: Team;
+  isLoading: boolean = true;
 
   constructor(private teamService: TeamService, public addMemberDialog: MatDialog, public addNewTeamDialog: MatDialog) { }
 
   ngOnInit() {
-    this.teamService.getAllTeams().subscribe(data =>{
+    this.teamService.getAllTeams().subscribe(data => {
+      this.isLoading = false;
       data.forEach(team => {
         this.teams.push(new Team(team));
       });
