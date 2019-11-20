@@ -56,7 +56,6 @@ export class AddNewTeamDialogComponent {
 
     if (teamForm.get('name').value.trim() !== '') {
       this.teamservice.addTeam(team).subscribe(data => {
-        console.log(data);
       this.close()});
     } else {
       this.teamForm.get('name').setValue('');
