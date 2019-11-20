@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Team } from '../models/team.model';
 import { TeamService } from '../team.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { AddMemberDialogData } from '../interfaces/add-member-dialog-data.interface';
 import { PicsumService } from '../picsum.service';
 import { PicsumPhoto } from '../interfaces/picsum-photo.interface';
@@ -33,8 +33,8 @@ export class AddNewMemberDialogComponent implements OnInit {
 
   memberForm = new FormGroup({
     pathToPhoto: new FormControl(''),
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
     title: new FormControl(''),
     team: new FormControl('')
   });
@@ -78,6 +78,31 @@ export class AddNewMemberDialogComponent implements OnInit {
 
   setSelectedPic(image: Picture) {
     this.selectedImage = image;
+  }
+
+  addMember(memberForm, photo: Picture) {
+    const member = {
+      firstName: memberForm.get('firstName').value.trim(),
+      lastName: memberForm.get('lastName').value.trim(),
+      title: memberForm.get('title').value,
+      pathToPhoto: photo.url,
+      team: memberForm.get('team').value
+    };
+
+    if (memberForm.get('firstName').value.trim() !== '' && memberForm.get('lastName').value.trim() !== '') {
+      this.teamservice.addMember(member).subscribe(data => {
+        this.teamservice.refreshTeams();
+        this.close()
+      });
+    }
+    
+    if (memberForm.get('firstName').value.trim() == '') {
+      this.memberForm.get('firstName').setErrors({required: true});
+    }
+
+    if (memberForm.get('lastName').value.trim() == '') {
+      this.memberForm.get('lastName').setErrors({required: true});
+    }
   }
 
 }
