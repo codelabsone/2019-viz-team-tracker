@@ -28,7 +28,9 @@ export class AddNewTeamDialogComponent {
   matcher = new MyErrorStateMatcher;
 
   teamForm = new FormGroup({
-    name: new FormControl('', [Validators.required]),
+    name: new FormControl('',
+    [Validators.required//,
+    /*Validators.pattern('.*\S+.*')*/]),
     description: new FormControl('')
   });
 
@@ -52,12 +54,13 @@ export class AddNewTeamDialogComponent {
       description:teamForm.get('description').value
     }
 
-    if (team.name.length < 1) {
-      this.teamError = true;
-    } else {
+    if (teamForm.get('name').value.trim() !== '') {
       this.teamservice.addTeam(team).subscribe(data => {
         console.log(data);
       this.close()});
+    } else {
+      this.teamForm.get('name').setValue('');
+      this.teamForm.get('name').setErrors({required: true});
     }
 
   }
