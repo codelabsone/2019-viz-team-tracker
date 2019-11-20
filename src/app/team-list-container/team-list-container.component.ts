@@ -21,19 +21,21 @@ export class TeamListContainerComponent implements OnInit {
   constructor(private teamService: TeamService, public addMemberDialog: MatDialog, public addNewTeamDialog: MatDialog) { }
 
   ngOnInit() {
+    this.teamService.refreshTeams();
     this.getTeamsFromService();
+    this.teamService.isLoading.subscribe(data => {
+      this.isLoading = data;
+    })
     this.teamService.selectedTeam.subscribe(data =>{
       this.selectedTeam = data;
     })
   }
 
+
   getTeamsFromService() {
-    this.teamService.getAllTeams().subscribe(data => {
-      this.isLoading = false;
-      this.teams = [];
-      data.forEach(team => {
-        this.teams.push(new Team(team));
-      });
+    this.teamService.teamsList.subscribe(data => {
+      console.log('change in teamslist subject')
+      this.teams = data;
     });
   }
 

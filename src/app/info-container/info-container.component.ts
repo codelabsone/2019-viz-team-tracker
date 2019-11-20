@@ -38,8 +38,20 @@ selectedMember: Teammember = null;
     // console.log("dialog opened!");
     const dialogRef = this.editTeamDialog.open(EditTeamDialogComponent, { data: { team: this.team } });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-    });
+    dialogRef.afterClosed().subscribe();
+  }
+
+  deleteTeamConfirm(team: Team) {
+    let response: boolean;
+    response = confirm("Are you sure you want to delete " + team.name + "?");
+    if (response) {
+      console.log("deleting");
+      this.teamservice.deleteTeam(team).subscribe(data => {
+        this.teamservice.refreshTeams();
+      });
+    }
+    else {
+      console.log('declined')
+    }
   }
 }
