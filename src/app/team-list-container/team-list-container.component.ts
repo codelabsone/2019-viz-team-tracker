@@ -54,7 +54,7 @@ export class TeamListContainerComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.getTeamsFromService();
+      this.teamService.refreshTeams();
     });
   }
   
