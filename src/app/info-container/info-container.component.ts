@@ -23,6 +23,7 @@ selectedMember: Teammember = null;
   ngOnInit() {
     this.teamservice.selectedTeam.subscribe(data => {
         this.team = data;
+        this.selectedMember = null;
       });
     }
 
