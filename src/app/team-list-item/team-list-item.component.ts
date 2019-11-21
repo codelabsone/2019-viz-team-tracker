@@ -58,7 +58,6 @@ export class TeamListItemComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<Teammember[]>, team: Team) {
-    console.log(event);
     if (event.previousContainer === event.container) {
       moveItemInArray(team.members, event.previousIndex, event.currentIndex);
     } else {
@@ -67,6 +66,14 @@ export class TeamListItemComponent implements OnInit {
           event.container.data,
           event.previousIndex,
           event.currentIndex);
+          let member = event.container.data[event.currentIndex];
+          member.teamId = event.container.data[(event.currentIndex === 0) ? 1 : 0].teamId;
+          ////////////////////////////////////////////////////////////////////////
+          //                                                                    //
+          //   member needs attributes firstName and lastName instead of name   //
+          //                                                                    //
+          ////////////////////////////////////////////////////////////////////////
+          this.teamService.updateMember(member).subscribe(data => console.log(data));
       }
       else {
         this.startErrorTimer(team);

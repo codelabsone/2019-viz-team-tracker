@@ -9,6 +9,7 @@ import { PicsumPhoto } from '../interfaces/picsum-photo.interface';
 import { Picture } from '../models/picture.model';
 import { PageEvent, MatPaginator } from '@angular/material';
 import { Teammember } from '../models/member.model';
+import { MemberFromApi } from '../models/memberFromApi.model';
 
 export interface DialogData {
 
@@ -120,8 +121,15 @@ export class AddNewMemberDialogComponent implements OnInit {
         });
       }
       if (this.data.method === 'edit') {
-        console.log(member)
-        this.teamservice.updateMember(member).subscribe(data => {
+        const memberToSend: MemberFromApi = {
+          id: member.id,
+          firstName: member.firstName,
+          lastName: member.lastName,
+          title: member.title,
+          pathToPhoto: photo.url,
+          teamId: member.team
+        }
+        this.teamservice.updateMember(memberToSend).subscribe(data => {
           this.teamservice.refreshTeams();
           this.close()
         });

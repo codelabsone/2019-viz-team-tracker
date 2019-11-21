@@ -9,6 +9,9 @@ export class Teammember {
     jobtitle: string;
     avatar: string;
     id: number;
+    teamId: number;
+    firstName: string;
+    lastName: string;
 
     constructor(request: MemberFromApi) {
         this.name = request.firstName + ' ' + request.lastName;
@@ -16,6 +19,9 @@ export class Teammember {
         this.jobtitle = request.title;
         this.avatar = request.pathToPhoto;
         this.id = request.id;
+        this.teamId = request.teamId;
+        this.firstName = request.firstName;
+        this.lastName = request.lastName;
     }
 
     createPictureFromUrl(): Picture {
