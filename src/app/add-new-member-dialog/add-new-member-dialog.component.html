@@ -32,6 +32,7 @@
             {{title}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="memberForm.controls['title'].hasError('required')">Job title required</mat-error>
       </mat-form-field>
 
       <mat-form-field class="name-input">
