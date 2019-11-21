@@ -100,14 +100,14 @@ export class AddNewMemberDialogComponent implements OnInit {
         this.teamservice.refreshTeams();
         this.close()
       });
-    }
-    
-    if (memberForm.get('firstName').value.trim() == '') {
-      this.memberForm.get('firstName').setErrors({required: true});
-    }
+    } else {
+        if (memberForm.get('firstName').value.trim() == '') {
+          this.memberForm.get('firstName').setErrors({required: true});
+        }
 
-    if (memberForm.get('lastName').value.trim() == '') {
-      this.memberForm.get('lastName').setErrors({required: true});
+        if (memberForm.get('lastName').value.trim() == '') {
+          this.memberForm.get('lastName').setErrors({required: true});
+        }
     }
   }
 
