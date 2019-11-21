@@ -39,7 +39,14 @@ export class TeamListItemComponent implements OnInit {
 
   openAddPersonDialog(): void {
     const dialogRef = this.addMemberDialog.open(AddNewMemberDialogComponent, {
-      data: { team: this.team, allTeams: this.allTeams }
+      data: { team: this.team, allTeams: this.allTeams, method: 'add',
+        member: {
+          name: '',
+          email: '',
+          jobtitle: '',
+          avatar: '',
+          id: null
+        } }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -51,6 +58,7 @@ export class TeamListItemComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<Teammember[]>, team: Team) {
+    console.log(event);
     if (event.previousContainer === event.container) {
       moveItemInArray(team.members, event.previousIndex, event.currentIndex);
     } else {

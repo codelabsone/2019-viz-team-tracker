@@ -42,6 +42,10 @@ export class TeamService {
     return this.http.delete("https://viz-teams-back.herokuapp.com/team/" + team.id, {responseType: 'text'});
   }
 
+  updateTeam(team: any) {
+    return this.http.put('https://viz-teams-back.herokuapp.com/team', team);
+  }
+
   addMember(member: any) {
     return this.http.post('https://viz-teams-back.herokuapp.com/member', member);
   }
@@ -50,8 +54,7 @@ export class TeamService {
     return this.http.delete('https://viz-teams-back.herokuapp.com/member/' + member.id, {responseType: 'text'});
   }
 
-  updateTeam(team: any) {
-    return this.http.put('https://viz-teams-back.herokuapp.com/team', team);
+  updateMember(member: any) {
+    return this.http.put('https://viz-teams-back.herokuapp.com/member/' + member.id, member);
   }
-
 }

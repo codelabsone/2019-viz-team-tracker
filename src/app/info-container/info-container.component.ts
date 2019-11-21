@@ -4,6 +4,8 @@ import { Teammember } from '../models/member.model';
 import { TeamService } from '../team.service';
 import { MatDialog } from '@angular/material';
 import { EditTeamDialogComponent } from '../edit-team-dialog/edit-team-dialog.component';
+import { AddNewMemberDialogComponent } from '../add-new-member-dialog/add-new-member-dialog.component';
+import { TeamFromApi } from '../models/teamFromApi.model';
 
 
 @Component({
@@ -15,8 +17,9 @@ export class InfoContainerComponent implements OnInit {
 
 team: Team;
 selectedMember: Teammember = null;
+allTeams: Team[] = [];
 
-  constructor(private teamservice: TeamService, public editTeamDialog: MatDialog) { 
+  constructor(private teamservice: TeamService, public editTeamDialog: MatDialog, public addMemberDialog: MatDialog) { 
 
   }
 
@@ -25,6 +28,12 @@ selectedMember: Teammember = null;
         this.team = data;
         this.selectedMember = null;
       });
+
+    this.teamservice.getAllTeams().subscribe((teamsFromApi: TeamFromApi[]) => {
+      teamsFromApi.forEach(team => {
+        this.allTeams.push(new Team(team));
+      });
+    });
     }
 
   onClickMe(member: Teammember) {
@@ -36,7 +45,6 @@ selectedMember: Teammember = null;
   }
 
   openEditTeamDialog() {
-    // console.log("dialog opened!");
     const dialogRef = this.editTeamDialog.open(EditTeamDialogComponent, { data: { team: this.team } });
 
     dialogRef.afterClosed().subscribe();
@@ -67,5 +75,15 @@ selectedMember: Teammember = null;
     } else {
       console.log('member delete declined');
     }
+  }
+
+  openEditMemberDialog(): void {
+    const dialogRef = this.addMemberDialog.open(AddNewMemberDialogComponent, {
+      data: { team: this.team, allTeams: this.allTeams, method: 'edit', member: this.selectedMember, id: this.selectedMember.id }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
   }
 }
