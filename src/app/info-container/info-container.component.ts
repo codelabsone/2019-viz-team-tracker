@@ -46,13 +46,26 @@ selectedMember: Teammember = null;
     let response: boolean;
     response = confirm("Are you sure you want to delete " + team.name + "?");
     if (response) {
-      console.log("deleting");
       this.teamservice.deleteTeam(team).subscribe(data => {
         this.teamservice.refreshTeams();
       });
     }
     else {
       console.log('declined')
+    }
+  }
+
+  deleteMember(member: Teammember) {
+    let response: boolean;
+    response = confirm("Are you sure you want to delete " + member.name + "?");
+    if (response) {
+      this.team.members = this.team.members.filter(m => { m !== member });
+      this.selectedMember = null;
+      this.teamservice.deleteMember(member).subscribe(data => {
+        this.teamservice.refreshTeams();
+      });
+    } else {
+      console.log('member delete declined');
     }
   }
 }

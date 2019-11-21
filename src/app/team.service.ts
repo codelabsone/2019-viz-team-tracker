@@ -46,4 +46,8 @@ export class TeamService {
     return this.http.post('https://viz-teams-back.herokuapp.com/member', member);
   }
 
+  deleteMember(member: any) {
+    return this.http.delete('https://viz-teams-back.herokuapp.com/member/' + member.id, {responseType: 'text'});
+  }
+
 }

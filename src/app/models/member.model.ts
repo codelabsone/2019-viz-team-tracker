@@ -8,12 +8,14 @@ export class Teammember {
     email: string;
     jobtitle: string;
     avatar: string;
+    id: number;
 
     constructor(request: MemberFromApi) {
         this.name = request.firstName + ' ' + request.lastName;
         this.email = request.firstName + '.' + request.lastName + '@vizientinc.com';
         this.jobtitle = request.title;
         this.avatar = request.pathToPhoto;
+        this.id = request.id;
     }
 
     createPictureFromUrl(): Picture {
