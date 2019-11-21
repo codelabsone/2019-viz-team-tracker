@@ -35,8 +35,8 @@ export class AddNewMemberDialogComponent implements OnInit {
     pathToPhoto: new FormControl(''),
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
-    title: new FormControl(''),
-    team: new FormControl('')
+    title: new FormControl('', [Validators.required]),
+    team: new FormControl('', [Validators.required])
   });
 
 
@@ -59,6 +59,12 @@ export class AddNewMemberDialogComponent implements OnInit {
     this.teamservice.selectedTeam.subscribe(data => {
       this.selectedTeam = data;
     });
+
+    this.team = this.data.team;
+    console.log(this.data.team);
+
+    this.memberForm.get('team').setValue(this.team.id);
+
     this.picsumService.getImages(1, 100).subscribe((picsumPhotos: PicsumPhoto[]) => {
       picsumPhotos.forEach((photo: PicsumPhoto) => {
         this.images.push(new Picture(photo.id));
@@ -86,7 +92,7 @@ export class AddNewMemberDialogComponent implements OnInit {
       lastName: memberForm.get('lastName').value.trim(),
       title: memberForm.get('title').value,
       pathToPhoto: photo.url,
-      team: memberForm.get('team').value
+      team: memberForm.get('teamName').value
     };
 
     if (memberForm.get('firstName').value.trim() !== '' && memberForm.get('lastName').value.trim() !== '') {

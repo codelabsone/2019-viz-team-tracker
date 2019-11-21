@@ -2,6 +2,11 @@
 
 $fontcolor: rgba(69,90,100,.87);
 
+.mat-dialog-content {
+  // overflow: hidden !important;
+  height: auto;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #f5f5f5; }
 
