@@ -92,7 +92,7 @@ export class AddNewMemberDialogComponent implements OnInit {
       lastName: memberForm.get('lastName').value.trim(),
       title: memberForm.get('title').value,
       pathToPhoto: photo.url,
-      team: memberForm.get('teamName').value
+      team: memberForm.get('team').value
     };
 
     if (memberForm.get('firstName').value.trim() !== '' && memberForm.get('lastName').value.trim() !== '') {
