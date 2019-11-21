@@ -35,7 +35,7 @@ export class AddNewMemberDialogComponent implements OnInit {
   selectedImage: Picture;
   selectedTeam: Team;
 
-  memberForm = new FormGroup({
+  memberForm: FormGroup = new FormGroup({
     pathToPhoto: new FormControl(''),
     firstName: new FormControl('', [Validators.required, Validators.pattern('.*\S+.*')]),
     lastName: new FormControl('', [Validators.required, Validators.pattern('.*\S+.*')]),
@@ -103,7 +103,7 @@ export class AddNewMemberDialogComponent implements OnInit {
     this.selectedImage = image;
   }
 
-  addMember(memberForm, photo: Picture) {
+  addMember(memberForm: FormGroup, photo: Picture) {
     const member = {
       firstName: memberForm.get('firstName').value.trim(),
       lastName: memberForm.get('lastName').value.trim(),
@@ -113,7 +113,7 @@ export class AddNewMemberDialogComponent implements OnInit {
       id: this.data.member.id
     };
 
-    if (memberForm.get('firstName').value.trim() !== '' && memberForm.get('lastName').value.trim() !== '') {
+    if (memberForm.get('firstName').value.trim() !== '' && memberForm.get('lastName').value.trim() !== '' && memberForm.get('title').value.trim() !== '') {
       if (this.data.method === 'add') {
         this.teamservice.addMember(member).subscribe(data => {
           this.teamservice.refreshTeams();
