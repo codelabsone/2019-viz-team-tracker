@@ -33,10 +33,17 @@ export class AddNewMemberDialogComponent implements OnInit {
 
   memberForm = new FormGroup({
     pathToPhoto: new FormControl(''),
+<<<<<<< Updated upstream
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
     title: new FormControl(''),
     team: new FormControl('')
+=======
+    firstName: new FormControl('', [Validators.required, Validators.pattern('.*\S+.*')]),
+    lastName: new FormControl('', [Validators.required, Validators.pattern('.*\S+.*')]),
+    title: new FormControl('', [Validators.required, Validators.pattern('.*\S+.*')]),
+    team: new FormControl('', [Validators.required, Validators.pattern('.*\S+.*')])
+>>>>>>> Stashed changes
   });
 
 
@@ -94,6 +101,7 @@ export class AddNewMemberDialogComponent implements OnInit {
         this.teamservice.refreshTeams();
         this.close()
       });
+<<<<<<< Updated upstream
     }
     
     if (memberForm.get('firstName').value.trim() == '') {
@@ -102,6 +110,18 @@ export class AddNewMemberDialogComponent implements OnInit {
 
     if (memberForm.get('lastName').value.trim() == '') {
       this.memberForm.get('lastName').setErrors({required: true});
+=======
+    } else {
+        if (this.memberForm.get('firstName').value.trim() == '') {
+          this.memberForm.get('firstName').setErrors({required: true});
+          this.memberForm.get('firstName').setValue('');
+        }
+
+        if (this.memberForm.get('lastName').value.trim() == '') {
+          this.memberForm.get('lastName').setErrors({required: true});
+          this.memberForm.get('lastName').setValue('');
+        }
+>>>>>>> Stashed changes
     }
   }
 
