@@ -32,10 +32,12 @@
             {{title}}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="memberForm.controls['title'].hasError('required')">Job title required</mat-error>
       </mat-form-field>
 
       <mat-form-field class="name-input">
-        <mat-select placeholder="Team" formControlName="team">
+        <mat-select placeholder="Team" formControlName="team" (value)="team">
+          <mat-option [value]="this.data.team.id">{{data.team.name}}</mat-option>
           <mat-option *ngFor="let team of data.allTeams" value="{{team.id}}">{{team.name}}</mat-option>
         </mat-select>
       </mat-form-field>

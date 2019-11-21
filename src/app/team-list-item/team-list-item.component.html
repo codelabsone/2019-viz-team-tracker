@@ -28,6 +28,16 @@
   <mat-action-row class="expansion-panel-tools">
     <span class="max-size-error" *ngIf="team.limitReachedError">Team size limited to 12 members.</span>
     <span class="team-counter">{{team.members.length}}/12</span>
-    <mat-icon (click)="openAddPersonDialog()">person_add</mat-icon>
+    <mat-icon
+     *ngIf="team.members.length <= 11"
+     (click)="openAddPersonDialog()">
+      person_add
+    </mat-icon>
+    <mat-icon
+     *ngIf="team.members.length === 12"
+     (click)="startErrorTimer(team)">
+      person_add
+    </mat-icon>
+           
   </mat-action-row>
 </mat-expansion-panel>

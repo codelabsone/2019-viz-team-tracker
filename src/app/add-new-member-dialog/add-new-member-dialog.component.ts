@@ -33,17 +33,10 @@ export class AddNewMemberDialogComponent implements OnInit {
 
   memberForm = new FormGroup({
     pathToPhoto: new FormControl(''),
-<<<<<<< Updated upstream
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
-    title: new FormControl(''),
-    team: new FormControl('')
-=======
     firstName: new FormControl('', [Validators.required, Validators.pattern('.*\S+.*')]),
     lastName: new FormControl('', [Validators.required, Validators.pattern('.*\S+.*')]),
     title: new FormControl('', [Validators.required, Validators.pattern('.*\S+.*')]),
     team: new FormControl('', [Validators.required, Validators.pattern('.*\S+.*')])
->>>>>>> Stashed changes
   });
 
 
@@ -55,6 +48,7 @@ export class AddNewMemberDialogComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.data.allTeams = this.data.allTeams.filter(data => data.id !== this.data.team.id);
     this.data.allTeams.forEach(team => {
       team.members.forEach(member => {
         if (!this.possibleJobTitles.includes(member.jobtitle)) {
@@ -62,10 +56,15 @@ export class AddNewMemberDialogComponent implements OnInit {
         }
       });
     });
+
+    this.memberForm.get('team').setValue(this.data.team.id);
+    console.log(this.data.team.id);
     
     this.teamservice.selectedTeam.subscribe(data => {
       this.selectedTeam = data;
     });
+
+
     this.picsumService.getImages(1, 100).subscribe((picsumPhotos: PicsumPhoto[]) => {
       picsumPhotos.forEach((photo: PicsumPhoto) => {
         this.images.push(new Picture(photo.id));
@@ -101,16 +100,6 @@ export class AddNewMemberDialogComponent implements OnInit {
         this.teamservice.refreshTeams();
         this.close()
       });
-<<<<<<< Updated upstream
-    }
-    
-    if (memberForm.get('firstName').value.trim() == '') {
-      this.memberForm.get('firstName').setErrors({required: true});
-    }
-
-    if (memberForm.get('lastName').value.trim() == '') {
-      this.memberForm.get('lastName').setErrors({required: true});
-=======
     } else {
         if (this.memberForm.get('firstName').value.trim() == '') {
           this.memberForm.get('firstName').setErrors({required: true});
@@ -121,8 +110,7 @@ export class AddNewMemberDialogComponent implements OnInit {
           this.memberForm.get('lastName').setErrors({required: true});
           this.memberForm.get('lastName').setValue('');
         }
->>>>>>> Stashed changes
-    }
+      }
   }
 
 }
