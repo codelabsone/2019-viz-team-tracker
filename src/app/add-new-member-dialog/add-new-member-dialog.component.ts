@@ -2,9 +2,12 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Team } from '../models/team.model';
 import { TeamService } from '../team.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { AddMemberDialogData } from '../interfaces/add-member-dialog-data.interface';
 import { PicsumService } from '../picsum.service';
+import { PicsumPhoto } from '../interfaces/picsum-photo.interface';
+import { Picture } from '../models/picture.model';
+import { PageEvent, MatPaginator } from '@angular/material';
 
 export interface DialogData {
 
@@ -22,12 +25,16 @@ export interface DialogData {
 export class AddNewMemberDialogComponent implements OnInit {
   possibleJobTitles: string[] = ['Quality Engineer', 'Software Engineer', 'UX Engineer'];
   team: Team;
+  images: Picture[] = [];
+  firstImage: number = 0;
+  lastImage: number = 5;
+  selectedImage: Picture;
   selectedTeam: Team;
 
   memberForm = new FormGroup({
     pathToPhoto: new FormControl(''),
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
     title: new FormControl(''),
     team: new FormControl('')
   });
@@ -52,18 +59,50 @@ export class AddNewMemberDialogComponent implements OnInit {
     this.teamservice.selectedTeam.subscribe(data => {
       this.selectedTeam = data;
     });
-    
-    this.picsumService.getImages(1, 100).subscribe(data => {
-      console.log(data);
+    this.picsumService.getImages(1, 100).subscribe((picsumPhotos: PicsumPhoto[]) => {
+      picsumPhotos.forEach((photo: PicsumPhoto) => {
+        this.images.push(new Picture(photo.id));
+      });
     })
   }
 
-  onNoclick(): void {
-    this.dialogRef.close();
+  setPagedPhotos(event: PageEvent, matPaginator: MatPaginator) {
+    const pageIndex = matPaginator.pageIndex * matPaginator.pageSize;
+    this.firstImage = pageIndex;
+    this.lastImage = 5 + pageIndex;
   }
 
   close() {
     this.dialogRef.close();
+  }
+
+  setSelectedPic(image: Picture) {
+    this.selectedImage = image;
+  }
+
+  addMember(memberForm, photo: Picture) {
+    const member = {
+      firstName: memberForm.get('firstName').value.trim(),
+      lastName: memberForm.get('lastName').value.trim(),
+      title: memberForm.get('title').value,
+      pathToPhoto: photo.url,
+      team: memberForm.get('team').value
+    };
+
+    if (memberForm.get('firstName').value.trim() !== '' && memberForm.get('lastName').value.trim() !== '') {
+      this.teamservice.addMember(member).subscribe(data => {
+        this.teamservice.refreshTeams();
+        this.close()
+      });
+    }
+    
+    if (memberForm.get('firstName').value.trim() == '') {
+      this.memberForm.get('firstName').setErrors({required: true});
+    }
+
+    if (memberForm.get('lastName').value.trim() == '') {
+      this.memberForm.get('lastName').setErrors({required: true});
+    }
   }
 
 }

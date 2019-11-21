@@ -1,29 +1,48 @@
 <mat-dialog-content class="dialog-box">
-  <div class="member-input">
-    <mat-form-field class="name-input">
-      <input matInput placeholder="First Name">
-    </mat-form-field>
-    <mat-form-field class="name-input">
-      <input matInput placeholder="Last Name">
-    </mat-form-field>
-  </div>
-  <div class="member-input">
-    <mat-form-field class="name-input">
-      <mat-select placeholder="Title">
-        <mat-option *ngFor="let title of possibleJobTitles" [value]="title">
-          {{title}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+  <form class="member-dialog" [formGroup]="memberForm">
+    <div *ngIf="images.length > 0">
+        <span class="image-container" *ngFor="let image of images.slice(firstImage, lastImage)">
+          <img [ngClass]="image === selectedImage ? 'selectedImage' : 'images'" (click)="setSelectedPic(image)" src="{{image.url}}" alt="">
+        </span>
+    </div>
+    
+    <mat-paginator #matPaginator
+      [length]="images.length"
+      [pageSize]="5"
+      (page)="setPagedPhotos($event, matPaginator)"
+      >
+    </mat-paginator>
 
-    <mat-form-field class="name-input">
-      <mat-select placeholder="Team" formControlName="team">
-        <mat-option *ngFor="let team of data.allTeams" value="{{team.id}}">{{team.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div class="member-input-buttons">
-    <button mat-button (click)="close()">Cancel</button>
-    <button mat-button>Submit</button>
-  </div>
+
+
+    <div class="member-input">
+      <mat-form-field class="name-input">
+        <input matInput placeholder="First Name" formControlName="firstName">
+        <mat-error *ngIf="memberForm.controls['firstName'].hasError('required')">First name required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="name-input">
+        <input matInput placeholder="Last Name" formControlName="lastName">
+        <mat-error *ngIf="memberForm.controls['lastName'].hasError('required')">Last name required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="member-input">
+      <mat-form-field class="name-input">
+        <mat-select placeholder="Title" formControlName="title">
+          <mat-option *ngFor="let title of possibleJobTitles" [value]="title">
+            {{title}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="name-input">
+        <mat-select placeholder="Team" formControlName="team">
+          <mat-option *ngFor="let team of data.allTeams" value="{{team.id}}">{{team.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="member-input-buttons">
+      <button mat-button (click)="close()">Cancel</button>
+      <button mat-button (click)="addMember(memberForm, selectedImage)">Submit</button>
+    </div>
+  </form>
 </mat-dialog-content>

@@ -1,6 +1,7 @@
 <form class="team-dialog" [formGroup]="teamForm">
   <mat-form-field class='team-name'>
-    <input matInput placeholder="Team Name" formControlName="name">
+    <input matInput placeholder="Team Name *" formControlName="name">
+    <mat-error *ngIf="teamForm.controls['name'].hasError('required')">Team name required</mat-error>
   </mat-form-field>
 
   <mat-form-field class="team-description">

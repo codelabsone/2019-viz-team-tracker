@@ -41,7 +41,7 @@
     <div class="info-panel-action-row" *ngIf="selectedMember === null">
       <mat-icon matTooltip="{{team.name}} History" matTooltipPosition='above'>history</mat-icon>
       <mat-icon matTooltip='Edit {{team.name}}' matTooltipPosition='above' (click)="openEditTeamDialog()">edit</mat-icon>
-      <mat-icon matTooltip='Archive {{team.name}}' matTooltipPosition='above'>archive</mat-icon>
+      <mat-icon matTooltip='Delete {{team.name}}' matTooltipPosition='above' (click)="deleteTeamConfirm(team)">delete</mat-icon>
     </div>
     <div class="info-panel-action-row" *ngIf="selectedMember !== null">
       <mat-icon matTooltip='Edit {{selectedMember.name}}' matTooltipPosition='above'>edit</mat-icon>

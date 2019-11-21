@@ -24,8 +24,10 @@ import {MatSelectModule} from '@angular/material/select';
 import { AddNewTeamDialogComponent } from './add-new-team-dialog/add-new-team-dialog.component';
 import { TeamListItemComponent } from './team-list-item/team-list-item.component';
 import { HttpClientModule } from '@angular/common/http';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditTeamDialogComponent } from './edit-team-dialog/edit-team-dialog.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -55,10 +57,13 @@ import { EditTeamDialogComponent } from './edit-team-dialog/edit-team-dialog.com
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    HttpClientModule,
+    MatPaginatorModule,
     MatFormFieldModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

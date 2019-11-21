@@ -1,7 +1,8 @@
 <mat-card id="teams-list">
    <mat-card-title>Teams</mat-card-title>
    <mat-card-content>
-      <mat-accordion multi="true" cdkDropListGroup>
+         <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+      <mat-accordion multi="true" cdkDropListGroup *ngIf="teams.length !== 0">
          <div *ngFor="let currentTeam of teams">
             <app-team-list-item [team]="currentTeam"></app-team-list-item>
          </div>

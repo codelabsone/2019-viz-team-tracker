@@ -16,18 +16,27 @@ import { PicsumService } from '../picsum.service';
 export class TeamListContainerComponent implements OnInit {
   teams: Team[] = [];
   selectedTeam: Team;
+  isLoading: boolean = true;
 
   constructor(private teamService: TeamService, public addMemberDialog: MatDialog, public addNewTeamDialog: MatDialog) { }
 
   ngOnInit() {
-    this.teamService.getAllTeams().subscribe(data =>{
-      data.forEach(team => {
-        this.teams.push(new Team(team));
-      });
-    });
+    this.teamService.refreshTeams();
+    this.getTeamsFromService();
+    this.teamService.isLoading.subscribe(data => {
+      this.isLoading = data;
+    })
     this.teamService.selectedTeam.subscribe(data =>{
       this.selectedTeam = data;
     })
+  }
+
+
+  getTeamsFromService() {
+    this.teamService.teamsList.subscribe(data => {
+      console.log('change in teamslist subject')
+      this.teams = data;
+    });
   }
 
   openAddPersonDialog(): void {
@@ -45,7 +54,7 @@ export class TeamListContainerComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.teamService.refreshTeams();
     });
   }
   
