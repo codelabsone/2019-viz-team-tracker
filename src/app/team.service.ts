@@ -50,4 +50,8 @@ export class TeamService {
     return this.http.delete('https://viz-teams-back.herokuapp.com/member/' + member.id, {responseType: 'text'});
   }
 
+  updateTeam(team: any) {
+    return this.http.put('https://viz-teams-back.herokuapp.com/team', team);
+  }
+
 }

@@ -1,17 +1,18 @@
-<mat-dialog-content class="dialog-box">
+<form class="team-dialog" [formGroup]="teamForm">
   <div class="team-input">
     <mat-form-field class="name-input">
-      <input matInput placeholder="Team Name" value="{{name}}">
+      <input matInput placeholder="Team Name" formControlName="name" value="{{name}}">
+      <mat-error *ngIf="teamForm.controls['name'].hasError('required')">Team name required</mat-error>
     </mat-form-field>
   </div>
 
   <div class="team-input">
     <mat-form-field class="description-input">
-      <input matInput placeholder="Team Description" value="{{description}}">
+      <input matInput placeholder="Team Description" formControlName="description" value="{{description}}">
     </mat-form-field>
   </div>
   <div class="team-input-buttons">
     <button mat-button (click)="close()">Cancel</button>
-    <button mat-button>Submit</button>
+    <button mat-button (click)="update()">Submit</button>
   </div>
-</mat-dialog-content>
+</form>

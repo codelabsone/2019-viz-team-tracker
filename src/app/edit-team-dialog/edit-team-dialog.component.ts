@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EditTeamDialogData } from '../interfaces/edit-team-dialog-data.interface';
 import { TeamService } from '../team.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-team-dialog',
@@ -13,6 +14,15 @@ export class EditTeamDialogComponent implements OnInit {
   name: string;
   description: string;
 
+  teamForm = new FormGroup({
+    name: new FormControl('',
+    [Validators.required//,
+    /*Validators.pattern('.*\S+.*')*/]),
+    description: new FormControl('')
+  });
+
+
+
   constructor(
     public dialogRef: MatDialogRef<EditTeamDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: EditTeamDialogData,
@@ -20,9 +30,11 @@ export class EditTeamDialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.data);
     this.name = this.data.team.name;
     this.description = this.data.team.description;
+
+    this.teamForm.get('name').setValue(this.name);
+    this.teamForm.get('description').setValue(this.description);
   }
 
   onNoclick(): void {
@@ -31,5 +43,21 @@ export class EditTeamDialogComponent implements OnInit {
 
   close(): void {
     this.dialogRef.close();
+  }
+
+  update(): void {
+    const team = {
+      name: this.teamForm.get('name').value,
+      description: this.teamForm.get('description').value
+    };
+
+    if (this.teamForm.get('name').value.trim() !== '') {
+      this.teamService.updateTeam(team).subscribe(data => {
+        console.log(data);
+        this.close()});
+    } else {
+      this.teamForm.get('name').setValue('');
+      this.teamForm.get('name').setErrors({required: true});
+    }
   }
 }
