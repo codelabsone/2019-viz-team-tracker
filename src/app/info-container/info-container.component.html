@@ -44,7 +44,7 @@
       <mat-icon matTooltip='Delete {{team.name}}' matTooltipPosition='above' (click)="deleteTeamConfirm(team)">delete</mat-icon>
     </div>
     <div class="info-panel-action-row" *ngIf="selectedMember !== null">
-      <mat-icon matTooltip='Edit {{selectedMember.name}}' matTooltipPosition='above'>edit</mat-icon>
+      <mat-icon matTooltip='Edit {{selectedMember.name}}' matTooltipPosition='above' (click)="openEditMemberDialog()">edit</mat-icon>
       <mat-icon matTooltip='Delete {{selectedMember.name}}' matTooltipPosition='above' (click)="deleteMember(selectedMember)">delete</mat-icon>
     </div>
   </div>

@@ -47,6 +47,7 @@ export class EditTeamDialogComponent implements OnInit {
 
   update(): void {
     const team = {
+      id: this.data.team.id,
       name: this.teamForm.get('name').value,
       description: this.teamForm.get('description').value
     };

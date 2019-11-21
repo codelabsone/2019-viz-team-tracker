@@ -8,6 +8,7 @@ import { PicsumService } from '../picsum.service';
 import { PicsumPhoto } from '../interfaces/picsum-photo.interface';
 import { Picture } from '../models/picture.model';
 import { PageEvent, MatPaginator } from '@angular/material';
+import { Teammember } from '../models/member.model';
 
 export interface DialogData {
 
@@ -15,6 +16,7 @@ export interface DialogData {
   jobtitle: string;
   email: string;
   avatar: string;
+  id: number;
 }
 
 @Component({
@@ -25,6 +27,7 @@ export interface DialogData {
 export class AddNewMemberDialogComponent implements OnInit {
   possibleJobTitles: string[] = ['Quality Engineer', 'Software Engineer', 'UX Engineer'];
   team: Team;
+  member: Teammember;
   images: Picture[] = [];
   firstImage: number = 0;
   lastImage: number = 5;
@@ -48,6 +51,7 @@ export class AddNewMemberDialogComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+
     this.data.allTeams = this.data.allTeams.filter(data => data.id !== this.data.team.id);
     this.data.allTeams.forEach(team => {
       team.members.forEach(member => {
@@ -56,20 +60,32 @@ export class AddNewMemberDialogComponent implements OnInit {
         }
       });
     });
-
+    
+    
     this.memberForm.get('team').setValue(this.data.team.id);
-    console.log(this.data.team.id);
     
     this.teamservice.selectedTeam.subscribe(data => {
       this.selectedTeam = data;
     });
-
+    
 
     this.picsumService.getImages(1, 100).subscribe((picsumPhotos: PicsumPhoto[]) => {
       picsumPhotos.forEach((photo: PicsumPhoto) => {
         this.images.push(new Picture(photo.id));
       });
-    })
+    });
+
+    if (this.data.member !== null) {
+      this.member = this.data.member;
+      if (this.member.avatar !== '') {
+        this.images.unshift(this.member.createPictureFromUrl());
+        this.setSelectedPic(this.images[0]);
+      }
+    }
+
+    this.memberForm.get('firstName').setValue(this.member.name.split(' ')[0]);
+    if (this.member.name.split(' ').length === 1) this.memberForm.get('lastName').setValue('');
+    else this.memberForm.get('lastName').setValue(this.member.name.split(' ')[1]);
   }
 
   setPagedPhotos(event: PageEvent, matPaginator: MatPaginator) {
@@ -92,14 +108,24 @@ export class AddNewMemberDialogComponent implements OnInit {
       lastName: memberForm.get('lastName').value.trim(),
       title: memberForm.get('title').value,
       pathToPhoto: photo.url,
-      team: memberForm.get('team').value
+      team: memberForm.get('team').value,
+      id: this.data.member.id
     };
 
     if (memberForm.get('firstName').value.trim() !== '' && memberForm.get('lastName').value.trim() !== '') {
-      this.teamservice.addMember(member).subscribe(data => {
-        this.teamservice.refreshTeams();
-        this.close()
-      });
+      if (this.data.method === 'add') {
+        this.teamservice.addMember(member).subscribe(data => {
+          this.teamservice.refreshTeams();
+          this.close()
+        });
+      }
+      if (this.data.method === 'edit') {
+        console.log(member)
+        this.teamservice.updateMember(member).subscribe(data => {
+          this.teamservice.refreshTeams();
+          this.close()
+        });
+      }
     } else {
         if (this.memberForm.get('firstName').value.trim() == '') {
           this.memberForm.get('firstName').setErrors({required: true});
