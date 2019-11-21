@@ -48,6 +48,7 @@ export class AddNewMemberDialogComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.data.allTeams = this.data.allTeams.filter(data => data.id !== this.data.team.id);
     this.data.allTeams.forEach(team => {
       team.members.forEach(member => {
         if (!this.possibleJobTitles.includes(member.jobtitle)) {
@@ -55,15 +56,14 @@ export class AddNewMemberDialogComponent implements OnInit {
         }
       });
     });
+
+    this.memberForm.get('team').setValue(this.data.team.id);
+    console.log(this.data.team.id);
     
     this.teamservice.selectedTeam.subscribe(data => {
       this.selectedTeam = data;
     });
 
-    this.team = this.data.team;
-    console.log(this.data.team);
-
-    this.memberForm.get('team').setValue(this.team.id);
 
     this.picsumService.getImages(1, 100).subscribe((picsumPhotos: PicsumPhoto[]) => {
       picsumPhotos.forEach((photo: PicsumPhoto) => {
