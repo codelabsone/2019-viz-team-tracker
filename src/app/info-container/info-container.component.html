@@ -1,24 +1,51 @@
 
 
 <mat-card class="info-container">
-  <div *ngIf="team !== null">
-    <mat-card-title>
-      {{team.name}}
-    </mat-card-title>
-    <mat-divider></mat-divider>
-  </div>
   <mat-card-content *ngIf="team == null" class="info-container-empty">
     Select a team to view members.
   </mat-card-content>
-  <mat-card-content *ngIf="team !== null" class="info-team-members">
-    <div *ngFor="let member of team.members" class="info-team-member">
-      <div class="info-team-member-image-container">
-        <img src="{{member.avatar}}" alt="{{member.name}}" class="info-container-thumb">
+  
+  <div *ngIf="team !== null" class="active-team-container">
+    <mat-card-title class="info-panel-header">
+      <span class="pointer-cursor" (click)="returnClick()" >{{team.name}}</span>
+      <span *ngIf="selectedMember">&nbsp;> {{selectedMember.name}}</span>
+    </mat-card-title>
+    
+    <mat-card-content *ngIf="selectedMember !== null" class="selected-member info-panel-grow">  
+      <div class="selected-member-container">
+        <div class="info-view__member-view-photo-container">
+            <img class="info-view__photo" src="{{selectedMember.avatar}}"
+                alt="{{selectedMember.name}}">
+        </div>
+        <div class="info-view__member-view-info-container">
+            <div>{{selectedMember.name}}</div>
+            <div>{{selectedMember.jobtitle}}</div>
+            <div>{{selectedMember.email}}</div>
+        </div>
       </div>
-      <div class="info-team-member-details">
-        <span>{{member.name}}</span><br>
-        <span>{{member.jobtitle}}</span>
+    </mat-card-content>
+
+    <mat-card-content *ngIf="selectedMember === null" class="info-team-members info-panel-grow">
+      <div  class="info-member-list-wrapper">
+      <div (click)="onClickMe(member)" *ngFor="let member of team.members" class="info-team-member">
+        <div class="info-team-member-image-container">
+          <img src="{{member.avatar}}" alt="{{selectedMember}}" class="info-container-thumb">
+        </div>
+        <div class="info-team-member-details">
+          <span>{{member.name}}</span><br>
+          <span>{{member.jobtitle}}</span>
+        </div>
       </div>
     </div>
-  </mat-card-content>
+    </mat-card-content>
+    <div class="info-panel-action-row" *ngIf="selectedMember === null">
+      <mat-icon matTooltip="{{team.name}} History" matTooltipPosition='above'>history</mat-icon>
+      <mat-icon matTooltip='Edit {{team.name}}' matTooltipPosition='above' (click)="openEditTeamDialog()">edit</mat-icon>
+      <mat-icon matTooltip='Delete {{team.name}}' matTooltipPosition='above' (click)="deleteTeamConfirm(team)">delete</mat-icon>
+    </div>
+    <div class="info-panel-action-row" *ngIf="selectedMember !== null">
+      <mat-icon matTooltip='Edit {{selectedMember.name}}' matTooltipPosition='above' (click)="openEditMemberDialog()">edit</mat-icon>
+      <mat-icon matTooltip='Delete {{selectedMember.name}}' matTooltipPosition='above' (click)="deleteMember(selectedMember)">delete</mat-icon>
+    </div>
+  </div>
 </mat-card>

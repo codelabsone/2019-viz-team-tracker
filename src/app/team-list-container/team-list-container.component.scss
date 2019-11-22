@@ -1,35 +1,33 @@
+@import '../../styles';
+
 mat-card#teams-list {
     width: 95%;
     height: 85vh;
     padding: 0px;
     margin: 20px;
     align-self: center;
-}
-
-mat-card-title {
-    color: #5e6f79;
-    padding: 10px 10px;
-}
-
-.member-avatar {
-    height: 40px;
-    padding: 10px;
-    cursor: move;
-}
-
-.team-member-avatar {
+    overflow-y: auto;
     display: flex;
-}
+    flex-direction: column;
 
+    mat-card-content {
+        overflow-y: auto;
+        flex-grow: 1;
+    }
 
-.expansion-panel-background {
-    background-color: lightgray;
-}
+    mat-card-title {
+        color: $fontcolor;
+        padding: 10px 10px;
+        flex-grow: 0;
+        border-bottom: 1px solid lightgray;
+    }
 
-.expansion-panel-tools {
-    mat-icon {
-        display: flex;
-        justify-content: right;
-        color: darkslategray;
+    mat-action-row {
+        flex-grow: 0;
+        color: gray;
+
+        mat-icon {
+            margin: 0 15px;
+        }
     }
 }

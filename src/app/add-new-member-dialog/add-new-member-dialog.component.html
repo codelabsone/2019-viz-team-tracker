@@ -1,0 +1,55 @@
+<mat-dialog-content class="dialog-box">
+  <form class="member-dialog" [formGroup]="memberForm">
+    <div *ngIf="images.length > 0">
+        <span class="image-container" *ngFor="let image of images.slice(firstImage, lastImage)">
+          <img [ngClass]="image === selectedImage ? 'selectedImage' : 'images'" (click)="setSelectedPic(image)" src="{{image.url}}" alt="">
+        </span>
+    </div>
+    
+    <mat-paginator #matPaginator
+      [length]="images.length"
+      [pageSize]="5"
+      (page)="setPagedPhotos($event, matPaginator)"
+      >
+    </mat-paginator>
+
+
+
+    <div class="member-input">
+      <mat-form-field class="name-input">
+        <input matInput placeholder="First Name" formControlName="firstName" [value]="member.name.split(' ')[0]">
+        <mat-error *ngIf="memberForm.controls['firstName'].hasError('required')">First name required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="name-input">
+        <input *ngIf="member.name.split(' ').length > 1" matInput placeholder="Last Name" formControlName="lastName" [value]="member.name.split(' ')[1]">
+        <input *ngIf="member.name.split(' ').length <= 1" matInput placeholder="Last Name" formControlName="lastName" [value]="">
+        <mat-error *ngIf="memberForm.controls['lastName'].hasError('required')">Last name required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="member-input">
+      <mat-form-field class="name-input">
+        <mat-select placeholder="Title" formControlName="title" (value)="member.jobtitle">
+          <mat-option [value]="member.jobtitle">
+            {{member.jobtitle}}
+          </mat-option>
+          <mat-option *ngFor="let title of possibleJobTitles" [value]="title">
+            {{title}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="memberForm.controls['title'].hasError('required')">Job title required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="name-input">
+        <mat-select placeholder="Team" formControlName="team" (value)="team">
+          <mat-option [value]="this.data.team.id">{{data.team.name}}</mat-option>
+          <mat-option *ngFor="let team of data.allTeams" value="{{team.id}}">{{team.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="member-input-buttons">
+      <button mat-button (click)="close()">Cancel</button>
+      <button mat-button *ngIf="data.method === 'add'" (click)="addMember(memberForm, selectedImage)">Add Member</button>
+      <button mat-button *ngIf="data.method === 'edit'" (click)="addMember(memberForm, selectedImage)">Submit</button>
+    </div>
+  </form>
+</mat-dialog-content>

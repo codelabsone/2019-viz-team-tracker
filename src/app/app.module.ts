@@ -15,15 +15,30 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {DragDropModule} from '@angular/cdk/drag-drop';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AddNewMemberDialogComponent } from './add-new-member-dialog/add-new-member-dialog.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import { AddNewTeamDialogComponent } from './add-new-team-dialog/add-new-team-dialog.component';
+import { TeamListItemComponent } from './team-list-item/team-list-item.component';
+import { HttpClientModule } from '@angular/common/http';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditTeamDialogComponent } from './edit-team-dialog/edit-team-dialog.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     InfoContainerComponent,
-    TeamListContainerComponent
+    TeamListContainerComponent,
+    AddNewMemberDialogComponent,
+    AddNewTeamDialogComponent,
+    TeamListItemComponent,
+    EditTeamDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +52,21 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatExpansionModule,
     MatIconModule,
     MatTooltipModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    HttpClientModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatProgressBarModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddNewMemberDialogComponent, AddNewTeamDialogComponent, EditTeamDialogComponent]
 })
 export class AppModule { }

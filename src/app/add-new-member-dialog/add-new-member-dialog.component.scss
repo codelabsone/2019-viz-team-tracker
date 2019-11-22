@@ -1,0 +1,43 @@
+@import '../../styles';
+
+.dialog-box {
+    padding: 1vw;
+}
+
+
+.member-input {
+    display: flex;
+    flex-direction: row;
+}
+
+.member-input-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    button {
+        margin-right: 1.25vw;
+        font-weight: lighter;
+    }
+}
+
+.name-input {
+    display: flex;
+    margin-left: .75vw;
+    margin-right: .75vw;
+}
+
+.images {
+    height: 100px;
+    width: 100px;
+    opacity: .5;
+}
+
+.image-container {
+    margin: 8px;
+}
+
+.selectedImage {
+    height: 100px;
+    width: 100px;
+    border-bottom: solid #ff4e00;
+}

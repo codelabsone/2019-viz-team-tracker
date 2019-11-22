@@ -1,13 +1,16 @@
+@import '../styles';
+
 .content-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: stretch;
-    height: 93vh;
+    height: calc(100% - 64px);
 }
 
 app-team-list-container, app-info-container { 
     width: 50%;
     display: flex;
 }
+

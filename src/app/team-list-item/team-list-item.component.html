@@ -1,0 +1,46 @@
+
+<mat-expansion-panel [expanded]='isExpanded' (mouseenter)="tryExpand()" (mouseleave)="tryClose()">
+  <mat-expansion-panel-header (click)="setSelectedTeam(team)">
+    <mat-panel-title>
+      {{team.name}}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div class="member-list empty"
+  *ngIf="team.members.length === 0"
+  cdkDropList cdkDropListOrientation="horizontal"
+  (cdkDropListDropped)="drop($event, team)"
+  [cdkDropListData]="team.members">
+    No members on this team.
+  </div>
+  <div *ngIf="team.members.length !== 0" 
+      class="member-list team-member-avatar"
+      cdkDropList cdkDropListOrientation="horizontal"
+      (cdkDropListDropped)="drop($event, team)"
+      [cdkDropListData]="team.members">
+          <div class="member-box" *ngFor="let member of team.members"
+            cdkDrag
+            (cdkDragStarted)="dragStart()"
+            (cdkDragReleased)="dragStop()">
+              <img matTooltip='{{member.name}}'
+              matTooltipPosition='above' 
+              class='member-avatar' 
+              src="{{member.avatar}}" 
+              alt="{{member.name}}">
+          </div>
+    </div>
+  <mat-action-row class="expansion-panel-tools">
+    <span class="max-size-error" *ngIf="team.limitReachedError">Team size limited to 12 members.</span>
+    <span class="team-counter">{{team.members.length}}/12</span>
+    <mat-icon
+     *ngIf="team.members.length <= 11"
+     (click)="openAddPersonDialog()">
+      person_add
+    </mat-icon>
+    <mat-icon
+     *ngIf="team.members.length === 12"
+     (click)="startErrorTimer(team)">
+      person_add
+    </mat-icon>
+           
+  </mat-action-row>
+</mat-expansion-panel>

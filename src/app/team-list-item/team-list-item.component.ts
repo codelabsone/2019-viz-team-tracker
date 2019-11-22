@@ -8,7 +8,10 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { moveItemInArray, CdkDragDrop, CdkDragStart, CdkDragRelease, transferArrayItem, CdkDrag } from '@angular/cdk/drag-drop';
 import { DraggingService } from '../dragging.service';
 import { TeamFromApi } from '../models/teamFromApi.model';
+<<<<<<< HEAD
 import { MemberFromApi } from '../models/memberFromApi.model';
+=======
+>>>>>>> @{-1}
 
 @Component({
   selector: 'app-team-list-item',
