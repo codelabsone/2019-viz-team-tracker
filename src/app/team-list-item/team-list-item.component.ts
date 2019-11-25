@@ -68,13 +68,14 @@ export class TeamListItemComponent implements OnInit {
           event.previousIndex,
           event.currentIndex);
           let member = event.container.data[event.currentIndex];
+          // console.log(event.container.data[(event.currentIndex === 0) ? 1 : 0].teamId);
           member.teamId = event.container.data[(event.currentIndex === 0) ? 1 : 0].teamId;
-          const memberApi: MemberFromApi = {
+          const memberApi = {
             firstName: member.firstName,
             lastName: member.lastName,
             title: member.jobtitle,
             pathToPhoto: member.avatar,
-            teamId: member.teamId,
+            team: event.container.data[(event.currentIndex === 0) ? 1 : 0].teamId,
             id: member.id
           }
           this.teamService.updateMember(memberApi).subscribe(data => console.log(data));

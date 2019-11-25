@@ -55,6 +55,8 @@ export class TeamService {
   }
 
   updateMember(member: any) {
+    console.log(member);
+    // console.log('https://viz-teams-back.herokuapp.com/member/' + member.id)
     return this.http.put('https://viz-teams-back.herokuapp.com/member/' + member.id, member);
   }
 }
